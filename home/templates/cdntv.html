@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block 'dashboard' %}
+
+    <div class="adicionar-cliente">
+        <h1 id="titulo"> Criando o email CDNTV </h1>
+        <form action= "{% url 'cdntv' %}" method="POST">
+            {% csrf_token %}
+         <div>
+                <div class="col-md">
+                    <p>Origin:</p>
+                    <input type="text" class="form-control" placeholder="Ex: http://45.175.124.26:8089/" name="origin" value="{{origin}}">
+                </div>
+                <div class="col-md">
+                    <p>Senha manager</p>
+                    <input type="text" class="form-control" placeholder="Digite a senha do manager" name="senha" value="{{senha}}">
+                </div>
+                <div class="col-md">
+                    <p>Edge</p>
+                    <input type="text" class="form-control" placeholder="Ex:https://subdomio_cliente.com.br/" name="edge" value="{{edge}}">
+                </div>
+            </div>
+        </div>
+            <br>
+            <p>E-mail:</p>
+            <input type="email" class="form-control" placeholder="Email do cliente que a mensagem será enviada" name="email" value="{{email}}">
+            <br>
+            <p>Titulo:</p>
+            <input type="text" class="form-control" placeholder="Assunto do E-mail" name="titulo" value="{{titulo}}">
+            <br>
+          <br>
+          <input type="submit" value="Cadastrar" class="btn-principal">
+        </form>
+           
+
+
+        <div class="w3-container">
+            <h2>Modelos</h2>
+            <p>Os acessos devem seguir esses modelos:</p>
+          
+            <blockquote class="w3-panel w3-leftbar w3-light-grey">
+              <p class="w3-large"><i>Manager: http://45.175.124.26:8089/</i></p>
+              <p class="w3-large"><i>Senha do manager: admin@cliente.com</i></p>
+              <p class="w3-large">Edge: https://subdomio_cliente.com.br/<i></i></p>
+              <p class="w3-large">Assunto: CDNTV[#3245] Nome do cliente </i></p>
+            </blockquote> 
+          </div>
+          
+          </div>
+    </div>
+
+{% endblock %}

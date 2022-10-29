@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block 'dashboard' %}
+
+    <div class="adicionar-cliente">
+        <form action= "{% url 'vod' %}">
+            <div>
+                <div class="col-md">
+                    <p>Origin:</p>
+                    <input type="text" class="form-control" placeholder="Ex: http://45.175.124.26:8089/" name="origin" value="{{origin}}">
+                </div>
+                <div class="col-md">
+                    <p>Senha manager</p>
+                    <input type="text" class="form-control" placeholder="Digite a senha do manager" name="senha" value="{{senha}}">
+                </div>
+                <div class="col-md">
+                    <p>Edge</p>
+                    <input type="text" class="form-control" placeholder="Ex:https://subdomio_cliente.com.br/" name="edge" value="{{edge}}">
+                </div>
+            </div>
+        </div>
+            <br>
+            <p>E-mail:</p>
+            <input type="email" class="form-control" placeholder="Email do cliente que a mensagem será enviada" name="email" value="{{email}}">
+            <br>
+            <p>Titulo:</p>
+            <input type="text" class="form-control" placeholder="Assunto do E-mail" name="titulo" value="{{titulo}}">
+            <br>
+          <br>
+          <input type="submit" value="Cadastrar" class="btn-principal">
+        </form>
+
+            <br>
+            <input type="submit" value="Cadastrar" class="btn-principal">
+
+        </form>
+        
+    </div>
+
+{% endblock %}

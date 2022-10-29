@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block 'head' %}
+    <link rel="stylesheet" href="{% static 'home/home.css' %}">
+{% endblock %}
+]
+{% block 'dashboard' %}
+
+
+<div id="load"></div>
+<div class="container" style="width:16%">
+  <img src=" {% static 'img/vod.png' %}" alt="Avatar" class="image">
+  <div class="middle">
+    <div><a href="{% url 'vod' %}"><button class="button botao_laranja">Email VOD</button></a></div>
+  </div>
+</div>
+
+<div class="cont2" style="width:14.5%">
+  <img src=" {% static 'img/cndtv.png' %}" class="imagem2">
+  <div class="middled2">
+    <div><a href="{% url 'cdntv' %}"><button class="button2 botao_preto2">Email CDNTV</button></a></div>
+  </div>
+</div>
+
+<div class="cont3" style="width:14.5%">
+  <img src=" {% static 'img/aplicativos.png' %}" class="imagem3">
+  <div class="middled3">
+    <div><a href="{% url 'aplicativos' %}"><button class="button3 botao_preto3">Email aplicativos</button></a></div>
+  </div>
+</div>
+
+
+
+{% endblock %}
+
+
