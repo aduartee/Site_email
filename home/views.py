@@ -4,7 +4,7 @@ from django.http import HttpResponse
 from django.core.mail import EmailMultiAlternatives
 from django.template.loader import render_to_string
 from django.utils.html import strip_tags
-from . models import Cdntv
+from home.models import Cdntv
 import re
 from django.conf import settings
 
@@ -40,7 +40,10 @@ def cdntv(request):
         html_content = render_to_string('email\emailcdntv.html',{'origin': origin, 'senha': senha, 'edge':edge, 'email': email, 'titulo':titulo})
         text_content = strip_tags(html_content)
         
-        email = EmailMultiAlternatives({'titulo': titulo}, text_content)
+        envia_email = EmailMultiAlternatives(titulo, text_content, settings.EMAIL_HOST_USER, [email])
+        envia_email.attach_alternative(html_content, 'text/html')
+        envia_email .send()
+        
         return render(request, 'confirma.html')
     
    
