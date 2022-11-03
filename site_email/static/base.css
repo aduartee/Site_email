@@ -239,10 +239,11 @@
 .home-section .text{
   display: inline-block;
   color: var(--main-color);
-  font-size: 25px;
+  font-size: 5px;
   font-weight: 500;
   margin: 18px
 }
+
 @media (max-width: 420px) {
   .sidebar li .tooltip{
     display: none;

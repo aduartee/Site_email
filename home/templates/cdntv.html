@@ -1,54 +1,214 @@
 {% extends 'base.html' %}
 {% load static %}
 
+{% block 'head' %}
 
+<style>
+    body {
+        height: 100vh;
+        width: 100vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        background-color: #2A2A2A;
+        font-family: "montserrat", sans-serif;
+        font-weight: 500;
+        color: #fff;
+    }
+
+    h1 {
+        padding-bottom: 30px;
+        font-weight: 900;
+        font-size: 35px;
+        right: 30%;
+    }
+
+    .btn-principal {
+        position: -webkit-sticky;
+        margin-left: -55%;
+        height: 50px;
+        width: 70px;
+    }
+
+
+
+    .form {
+        width: 45%;
+        position: relative;
+        right: 55%;
+        height: 120px;
+        overflow: hidden;
+    }
+
+    .form input {
+        width: 100%;
+        height: 100%;
+        color: #fff;
+        padding-top: 20px;
+        border: none;
+        background-color: #2A2A2A;
+    }
+
+    .form label {
+        position: absolute;
+        bottom: 25px;
+        left: 0px;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        border-bottom: 1px solid white;
+    }
+
+    .form label::after {
+        content: "";
+        position: absolute;
+        bottom: -1px;
+        left: -2px;
+        width: 100%;
+        height: 100%;
+        border-bottom: 3px solid #DA632C;
+        transform: translateX(-100%);
+        transition: all 0.3s ease;
+    }
+
+    .content-name {
+        position: absolute;
+        bottom: 0px;
+        left: 5px;
+        padding-bottom: 5px;
+        transition: all 0.7s ease;
+    }
+
+    .form input:focus {
+        outline: none;
+    }
+
+    .form input:focus+.label-name .content-name,
+    .form input:valid+.label-name .content-name {
+        transform: translateY(-80%);
+        font-size: 14px;
+        left: 0px;
+        color: #DA632C;
+    }
+
+    .form input:focus+.label-name::after,
+    .form input:valid+.label-name::after {
+        transform: translateX(0%);
+    }
+
+    /* Create two equal columns that floats next to each other */
+    .column {
+        float: left;
+        margin-top: -35%;
+        margin-left:10%;
+        width: 80%;
+        padding: 10px;
+        height: 250px;
+        /* Should be removed. Only for demonstration */
+    }
+
+    /* Clear floats after the columns */
+    .row:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+
+
+    @media screen and (max-width: 600px) {
+        .column {
+          width: 100%;
+        }
+      }
+</style>
+
+
+{% endblock %}
 {% block 'dashboard' %}
 
-    <div class="adicionar-cliente">
-        <h1 id="titulo"> Criando o email CDNTV </h1>
-        <form action= "{% url 'cdntv' %}" method="POST">
-            {% csrf_token %}
-         <div>
-                <div class="col-md">
-                    <p>Origin:</p>
-                    <input type="text" class="form-control" placeholder="Ex: http://45.175.124.26:8089/" name="origin" value="{{origin}}">
+<div class="adicionar-email">
+    <h1 id="titulo" style="margin-left:30px;"> Criando o email CDNTV </h1>
+    <form action="{% url 'cdntv' %}" method="POST">
+        {% csrf_token %}
+        <div class="total" style="margin-left: 35%;">
+            <div style="margin-top: 20px; margin-left:20px;">
+
+
+                <div class="form">
+                    <input type="text" autocomplete="off" name="origin" value="{{origin}}" required />
+                    <label for="text" class="label-name">
+                        <span class="content-name">
+                            Manager:
+                        </span>
+                    </label>
                 </div>
-                <div class="col-md">
-                    <p>Senha manager</p>
-                    <input type="text" class="form-control" placeholder="Digite a senha do manager" name="senha" value="{{senha}}">
+
+                <div class="form">
+                    <input type="text" autocomplete="off" name="senha" value="{{senha}}" required />
+                    <label for="text" class="label-name">
+                        <span class="content-name">
+                            Senha manager:
+                        </span>
+                    </label>
                 </div>
-                <div class="col-md">
-                    <p>Edge</p>
-                    <input type="text" class="form-control" placeholder="Ex:https://subdomio_cliente.com.br/" name="edge" value="{{edge}}">
+
+                <div class="form">
+                    <input type="text" autocomplete="off" name="edge" value="{{edge}}" required />
+                    <label for="text" class="label-name">
+                        <span class="content-name">
+                            Edge:
+                        </span>
+                    </label>
                 </div>
+
+
+                <div class="form">
+                    <input type="text" autocomplete="off" name="email" value="{{email}}" required />
+                    <label for="text" class="label-name">
+                        <span class="content-name">
+                            E-mail do cliente:
+                        </span>
+                    </label>
+                </div>
+
+                <div class="form">
+                    <input type="text" autocomplete="off" name="demanda" value="{{demanda}}" required />
+                    <label for="text" class="label-name">
+                        <span class="content-name">
+                            Numero da demanda:
+                        </span>
+                    </label>
+                </div>
+
+                <div class="form">
+                    <input type="text" autocomplete="off" name="provedor" value="{{provedor}}" required />
+                    <label for="text" class="label-name">
+                        <span class="content-name">
+                            Nome do provedor:
+                        </span>
+                    </label>
+                </div>
+
+                <input type="submit" value="Enviar" class="btn-principal">
             </div>
+
+    </form>
+
+
+
+    <div class="row">
+        <div class="column" style="background-color:#333333; ">
+            <h2>Lembrando que os acessos devem seguir esses modelos:</h2>
+            <p>Manager: http://45.175.124.26:8089/ </p>
+            <p>Senha do manager: admin@cliente.com </p>
+            <p>Edge: https://subdomio_cliente.com.br/</p>
+            <p>Titulo do email: CDNTV[#3245] Nome do cliente  </p>
+
         </div>
-            <br>
-            <p>E-mail:</p>
-            <input type="email" class="form-control" placeholder="Email do cliente que a mensagem será enviada" name="email" value="{{email}}">
-            <br>
-            <p>Titulo:</p>
-            <input type="text" class="form-control" placeholder="Assunto do E-mail" name="titulo" value="{{titulo}}">
-            <br>
-          <br>
-          <input type="submit" value="Cadastrar" class="btn-principal">
-        </form>
-           
 
 
-        <div class="w3-container">
-            <h2>Modelos</h2>
-            <p>Os acessos devem seguir esses modelos:</p>
-          
-            <blockquote class="w3-panel w3-leftbar w3-light-grey">
-              <p class="w3-large"><i>Manager: http://45.175.124.26:8089/</i></p>
-              <p class="w3-large"><i>Senha do manager: admin@cliente.com</i></p>
-              <p class="w3-large">Edge: https://subdomio_cliente.com.br/<i></i></p>
-              <p class="w3-large">Assunto: CDNTV[#3245] Nome do cliente </i></p>
-            </blockquote> 
-          </div>
-          
-          </div>
     </div>
+</div>
 
 {% endblock %}

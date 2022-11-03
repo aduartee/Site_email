@@ -16,31 +16,32 @@ def vod(request):
     return render(request, 'vod.html')
 
 def cdntv(request):
-    ### Se a request for do tip GET, o retorna será a pagina renderizada novamente
+    ### Se a request for do tip GET, o retorno será a pagina renderizada novamente
     if request.method == "GET":
         return render(request, 'cdntv.html')
     
-    ### Caso retorno for um metodo POST, guarda os valores do form em uma variavel
+    ### Caso request for um metodo POST, guarda os valores do form em uma variavel
     elif request.method == "POST":
         origin = request.POST.get('origin')
         senha = request.POST.get('senha')
         edge = request.POST.get('edge')
         email = request.POST.get('email')
-        titulo = request.POST.get('titulo')
+        demanda = request.POST.get('demanda')
+        provedor = request.POST.get('provedor')
         
         cdntv = Cdntv(
            origin = origin,
            senha = senha,
            edge = edge,
            email = email,
-           titulo = titulo
+           demanda = demanda,
+           provedor = provedor
         )
         
         cdntv.save()
-        html_content = render_to_string('email\emailcdntv.html',{'origin': origin, 'senha': senha, 'edge':edge, 'email': email, 'titulo':titulo})
+        html_content = render_to_string('email\emailcdntv.html',{'origin': origin, 'senha': senha, 'edge':edge, 'email': email})
         text_content = strip_tags(html_content)
-        
-        envia_email = EmailMultiAlternatives(titulo, text_content, settings.EMAIL_HOST_USER, [email])
+        envia_email = EmailMultiAlternatives(f'CDNTV[#{demanda}] - {provedor} - Implementação do serviço', text_content, settings.EMAIL_HOST_USER, [email])
         envia_email.attach_alternative(html_content, 'text/html')
         envia_email .send()
         
@@ -50,9 +51,9 @@ def cdntv(request):
     
     
      
-        
+    # Validando se o usuario está digitando um email valido
     if not re.fullmatch(re.compile(r'([A-Za-z0-9]+[.-_])*[A-Za-z0-9]+@[A-Za-z0-9-]+(\.[A-Z|a-z]{2,})+'), email):
-        return render(request, 'cdntv.html', {'orgin': origin, 'senha': senha, 'edge':edge, 'titulo':titulo})
+        return render(request, 'cdntv.html', {'orgin': origin, 'senha': senha, 'edge':edge, 'demanda': demanda, 'provedor':provedor})
     
     
     return HttpResponse('Email enviado!')

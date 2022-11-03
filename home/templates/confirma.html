@@ -1,32 +1,44 @@
 {% load static %}
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Confirma</title>
+
+    <title>Email enviado!</title>
 
     <style>
+        .container {
+            margin-left: 45%;
+        }
+
         body {
             background-image: url("{% static 'img/background.jpg' %}");
             background-repeat: no-repeat;
-            background-size:cover;
+            background-size: cover;
         }
-        .titulo{
-            color:white;
-            margin-left: 40%;
+
+        .titulo {
+            color: white;
+            margin-left: 35%;
             text-shadow: 1px 1.5px 2px #000000;
-
-
-
-        } 
-
+        }
     </style>
 </head>
+
 <body>
-    
-    <h1 class='titulo'>Email enviado com sucesso</h1>
+    <h1 class='titulo'>Email enviado com sucesso!</h1>
+
+    <div class="container">
+        <a href="http://127.0.0.1:8000"><button type="button" class="btn btn-primary active">Home</button></a>
+    </div>
     <img>
 </body>
+
 </html>
