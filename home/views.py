@@ -9,12 +9,6 @@ import re
 from django.conf import settings
 
 
-def perfil(request): 
-    pass
-
-def vod(request):
-    return render(request, 'vod.html')
-
 def cdntv(request):
     ### Se a request for do tip GET, o retorno será a pagina renderizada novamente
     if request.method == "GET":
@@ -58,9 +52,11 @@ def cdntv(request):
     
     return HttpResponse('Email enviado!')
 
-        
-        
 
+def vod(request):
+    return render(request, 'vod.html')
+
+        
 def aplicativos(request):
     return render(request, 'aplicativos.html')
 

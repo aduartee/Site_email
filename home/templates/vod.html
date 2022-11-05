@@ -1,42 +1,92 @@
 {% extends 'base.html' %}
 {% load static %}
 
+{% block 'head'%}
+<link rel="stylesheet" href="{% static 'home/vod.css' %}">
+{% endblock %}
+
 
 {% block 'dashboard' %}
+<div class="adicionar-email">
+    <h1 id="titulo" style="margin-left:30px;"> Criando o email do VOD </h1>
+    <form action="{% url 'vod' %}" method="POST">
+        {% csrf_token %}
+        <div class="total" style="margin-left: 35%;">
+            <div style="margin-top: 20px; margin-left:20px;">
 
-    <div class="adicionar-cliente">
-        <form action= "{% url 'vod' %}">
-            <div>
-                <div class="col-md">
-                    <p>Origin:</p>
-                    <input type="text" class="form-control" placeholder="Ex: http://45.175.124.26:8089/" name="origin" value="{{origin}}">
+
+                <div class="form">
+                    <input type="text" autocomplete="off" name="origin" value="{{origin}}" required />
+                    <label for="text" class="label-name">
+                        <span class="content-name">
+                            Manager:
+                        </span>
+                    </label>
                 </div>
-                <div class="col-md">
-                    <p>Senha manager</p>
-                    <input type="text" class="form-control" placeholder="Digite a senha do manager" name="senha" value="{{senha}}">
+
+                <div class="form">
+                    <input type="text" autocomplete="off" name="edge" value="{{edge}}" required />
+                    <label for="text" class="label-name">
+                        <span class="content-name">
+                            Edge:
+                        </span>
+                    </label>
                 </div>
-                <div class="col-md">
-                    <p>Edge</p>
-                    <input type="text" class="form-control" placeholder="Ex:https://subdomio_cliente.com.br/" name="edge" value="{{edge}}">
+
+
+                <div class="form">
+                    <input type="text" autocomplete="off" name="email" value="{{email}}" required />
+                    <label for="text" class="label-name">
+                        <span class="content-name">
+                            E-mail do cliente:
+                        </span>
+                    </label>
                 </div>
+
+                <div class="form">
+                    <input type="text" autocomplete="off" name="demanda" value="{{demanda}}" required />
+                    <label for="text" class="label-name">
+                        <span class="content-name">
+                            Numero da demanda:
+                        </span>
+                    </label>
+                </div>
+
+                <div class="form">
+                    <input type="text" autocomplete="off" name="provedor" value="{{provedor}}" required />
+                    <label for="text" class="label-name">
+                        <span class="content-name">
+                            Nome do provedor:
+                        </span>
+                    </label>
+                </div>
+
+                <input type="submit" value="Enviar" class="btn-principal">
             </div>
+
+    </form>
+
+
+
+    <div class="row">
+        <div class="column" style="background-color:#333333; ">
+            <h2>Lembrando que os acessos devem seguir esses modelos:</h2>
+            <p>Manager: http://45.175.124.26:8089/ </p>
+            <p>Senha do manager: admin@cliente.com </p>
+            <p>Edge: https://subdomio_cliente.com.br/</p>
+            <p>Titulo do email: CDNTV[#3245] Nome do cliente - Tipo do serviço</p>
+
         </div>
-            <br>
-            <p>E-mail:</p>
-            <input type="email" class="form-control" placeholder="Email do cliente que a mensagem será enviada" name="email" value="{{email}}">
-            <br>
-            <p>Titulo:</p>
-            <input type="text" class="form-control" placeholder="Assunto do E-mail" name="titulo" value="{{titulo}}">
-            <br>
-          <br>
-          <input type="submit" value="Cadastrar" class="btn-principal">
-        </form>
 
-            <br>
-            <input type="submit" value="Cadastrar" class="btn-principal">
-
-        </form>
         
     </div>
-
+</div>
 {% endblock %}
+
+{% block 'body' %}
+{% endblock %}
+<script src="{% static 'js/base.js' %}"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
