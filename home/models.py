@@ -13,3 +13,14 @@ class Cdntv(models.Model):
     
     def __str__(self) -> str:
         return self.origin
+    
+    
+class VOD(models.Model):
+    origin2 = models.CharField(max_length=50)
+    edge2 = models.CharField(max_length=45)
+    email2= models.CharField(max_length=60)
+    demanda2 = models.CharField(max_length=5)
+    nprovedor = models.CharField(max_length=200)
+    
+    def __str__(self) -> str:
+        return self.nprovedor

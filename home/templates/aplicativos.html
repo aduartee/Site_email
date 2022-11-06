@@ -1,4 +1,113 @@
 {% extends 'base.html' %}
 {% load static %}
 
-<h1>Aplicativos</h1>
+{% block 'head'%}
+<link rel="stylesheet" href="{% static 'home/aplicativos.css' %}">
+<link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500&display=swap" rel="stylesheet">
+{% endblock %}
+
+
+{% block 'dashboard' %}
+<div class="adicionar-email">
+    <h1 id="titulo" style="margin-left:30px;"> Criando o email dos Aplicativos </h1>
+    <form action="{% url 'aplicativos' %}" method="POST">
+        {% csrf_token %}
+        <div class="total" style="margin-left: 35%;">
+            <div style="margin-top: 20px; margin-left:20px;">
+                <div class="form">
+                    <input type="text" autocomplete="off" name="nome" value="{{nome}}" required />
+                    <label for="text" class="label-name">
+                        <span class="content-name">
+                            Nome do aplicativo:
+                        </span>
+                    </label>
+                </div>
+
+                <div class="form">
+                    <input type="text" autocomplete="off" name="mobile" value="{{mobile}}" required />
+                    <label for="text" class="label-name">
+                        <span class="content-name">
+                            Link do aplicativo mobile:
+                        </span>
+                    </label>
+                </div>
+
+                <div class="form">
+                    <input type="text" autocomplete="off" name="stb" value="{{stb}}" required />
+                    <label for="text" class="label-name">
+                        <span class="content-name">
+                            Link do aplicativo STB:
+                        </span>
+                    </label>
+                </div>
+
+                <div class="form">
+                    <input type="text" autocomplete="off" name="ios" value="{{ios}}" required />
+                    <label for="text" class="label-name">
+                        <span class="content-name">
+                            Link do aplicativo IOS:
+                        </span>
+                    </label>
+                </div>
+
+                <div class="form">
+                    <input type="text" autocomplete="off" name="apks" value="{{apks}}" required />
+                    <label for="text" class="label-name">
+                        <span class="content-name">
+                            Link dos apks:
+                        </span>
+                    </label>
+                </div>
+
+                <div class="form">
+                    <input type="text" autocomplete="off" name="demanda" value="{{demanda}}" required />
+                    <label for="text" class="label-name">
+                        <span class="content-name">
+                            Numero da demanda:
+                        </span>
+                    </label>
+                </div>
+
+                <div class="form">
+                    <input type="text" autocomplete="off" name="provedor" value="{{provedor}}" required />
+                    <label for="text" class="label-name">
+                        <span class="content-name">
+                            Nome do provedor:
+                        </span>
+                    </label>
+                </div>
+
+                <div class="frame">
+                    <button type="submit" value="Enviar" class="custom-btn btn-16">Enviar</button>
+                    <p style="font-family: Andale Mono, monospace;">
+                </div>
+
+
+            </div>
+
+    </form>
+
+
+
+    <div class="row">
+        <div class="column" style="background-color:#333333; ">
+            <h2>Lembrando que os acessos devem seguir esses modelos:</h2>
+            <p>Link app mobile: https://play.google.com/store/apps/details?id=br.com.provedor.mobile</p>
+            <p>Link app STB: https://play.google.com/store/apps/details?id=br.com.provedor.stb</p>
+            <p>Link app IOS: https://apps.apple.com/br/app/provedor/id123</p>
+            <p>Link dos apks: https://provedor.com.br/apks/</p>
+            <p>Titulo do email: CDNTV[#DEMANDA] PROVEDOR - Tipo do serviço</p>
+        </div>
+
+
+    </div>
+</div>
+{% endblock %}
+
+{% block 'body' %}
+{% endblock %}
+<script src="{% static 'js/base.js' %}"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
