@@ -16,11 +16,27 @@ class Cdntv(models.Model):
     
     
 class VOD(models.Model):
-    origin2 = models.CharField(max_length=50)
+    origin2 = models.CharField(max_length=70)
     edge2 = models.CharField(max_length=45)
     email2= models.CharField(max_length=60)
     demanda2 = models.CharField(max_length=5)
     nprovedor = models.CharField(max_length=200)
     
     def __str__(self) -> str:
-        return self.nprovedor
+        return self.origin2
+    
+
+class Aplicativos(models.Model):
+    nome = models.CharField(max_length=40)
+    mobile = models.CharField(max_length=43)
+    stb = models.CharField(max_length=50)
+    ios = models.CharField(max_length=50)
+    apks = models.CharField(max_length=60)
+    email3 = models.CharField(max_length=62)
+    demanda3 = models.CharField(max_length=5)
+    nprovedor2 =  models.CharField(max_length= 52)
+    
+    
+    def __str__(self) -> str:
+        return self.nome
+    

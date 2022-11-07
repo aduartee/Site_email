@@ -25,7 +25,9 @@ h1 {
     width: 70px;
 }
 
-
+.total {
+  margin-top: -3%;
+}
 
 .form {
     width: 45%;
