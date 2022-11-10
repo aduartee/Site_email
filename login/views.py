@@ -1,4 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
+from django.http import HttpResponse
+
 
 def home(request):
     pass
@@ -8,7 +10,7 @@ def cadastro(request):
 
 
 def login(request):
-    pass
+    return render(request,'login.html')
 
 
 def logout(request):
