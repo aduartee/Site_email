@@ -9,6 +9,7 @@ body {
     font-family: "montserrat", sans-serif;
     font-weight: 500;
     color: #fff;
+    overflow: hidden;
 }
 
 h1 {

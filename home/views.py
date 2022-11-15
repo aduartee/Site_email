@@ -1,4 +1,8 @@
 import http
+from django.contrib.auth.models import User
+from django.contrib.auth import authenticate, login
+from login.views import login,cadastro
+from login import models
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.core.mail import EmailMultiAlternatives
@@ -118,14 +122,12 @@ def aplicativos(request):
         envia_email.attach_alternative(html_content, 'text/html')
         envia_email.send()
         return render(request, 'confirma.html')
-        
     
-        
-    
-        
 
 def envia_email(request):
     return render(request, 'cdntv.html')
 
 def home(request):
-    return render(request, 'home.html')
+        return render(request, 'home.html')
+    
+

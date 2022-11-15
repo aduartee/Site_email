@@ -1,3 +1,6 @@
+body {
+  overflow: hidden;
+}
 .container {
   position: absolute;
   margin-left:30%;

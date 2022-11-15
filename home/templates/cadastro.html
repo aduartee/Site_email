@@ -1,0 +1,35 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+{% block 'head' %}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'login/cadastro.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <title>Casdastro</title>
+</head>
+{% endblock %}
+<body>
+    <div>
+    <section class="area-login">
+        <div class="login animate__animated animate__backInLeft">
+            <div>
+                <img src="{% static 'img/main-logo2.png' %}">
+            </div> 
+
+            <form action="{% url 'valida_cadastro'%}" method="POST">
+                {% csrf_token %}
+                <input type="text" placeholder="Usuario" autocomplete="off" name="usuario2" value="{{usuario2}}" required autofocus>
+                <input type="text" placeholder="Email(zimbra)" autocomplete="off" name="email2" value="{{email2}}" required autofocus>
+                <input type="password" placeholder="Senha" autocomplete="off" name="senha2" value="{{senha2}}" required autofocus>
+                <input type="password" placeholder="Confirmar senha" autocomplete="off" name="confirmasenha" value="{{confirmasenha}}" required autofocus>
+                <input class="bnt" type="submit" value="Cadastrar">
+            </form>
+        </div>
+    </div>
+    </section>
+</body>
+</html>
