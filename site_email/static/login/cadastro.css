@@ -10,7 +10,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 500px;
+    height: 520px;
     width: 400px;
     padding:37px;
     border-radius: 30px;
@@ -54,9 +54,11 @@ body {
 
 form [type="submit"]{
     display: block;
-    background-color: #595D5F;
+    background-color: #363940;
     font-weight: bold;
     font-size: 14px;
+    border-radius: 5px;
+    margin-top:20px;
     text-transform: uppercase;
     position: relative;
     cursor: pointer;
@@ -70,6 +72,12 @@ input::placeholder{
     font-size:17px;
 }
 
+button {
+    background-color: #595D5F;
+}
 
+a {
+    margin-bottom: 5px;
+}
 
 

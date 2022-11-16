@@ -1,16 +1,15 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponse
-from login.models import Login, Cadastrar
+from login.models import Cadastrar
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
 from hashlib import sha256
 from django.contrib.auth import login as login_django
 
-def home(request):
-    return render(request,'home.html')
 
 def cadastro(request):
-    return render(request, 'cadastro.html')
+    status = request.GET.get('status')
+    return render(request, 'cadastro.html', {'status': status})
 
 def valida_cadastro(request):
     usuario2 = request.POST.get('usuario2')
@@ -49,37 +48,34 @@ def valida_cadastro(request):
 
     except:
         return redirect('/auth/cadastro/?status=4')
-    
+
 def login(request):
-    if request.method == 'GET':
-        return render(request,'login.html')
+    status = request.GET.get('status')
+    return render(request, 'login.html', {'status': status})
     
-    elif request.method == 'POST':
-        usuario = request.POST.get('usuario')
-        senha = request.POST.get('senha')
-        
-        if campos_vazios(usuario, senha):
-            return redirect('login')
-        
-        
-        user = authenticate(usuario=usuario, password=senha)
-        
-        login = Login(
-            usuario = usuario,
-            senha = senha
-        )
-        
-        login.save()
-        if user: 
-            login_django(request, user)
-            return redirect('home')
+def valida_login(request):
+    usuario2 = request.POST.get('usuario2')
+    senha2= request.POST.get('senha2')
     
+    senha2 = sha256(senha2.encode()).hexdigest()
     
-    return HttpResponse('Login realizado')
+    usuario = Cadastrar.objects.filter(usuario2 = usuario2).filter(senha2 = senha2)
+    
+    if len(usuario) == 0:
+        return redirect('/auth/login/?status=1')
+    
+    elif len(usuario) > 0:
+        request.session['logado'] = True
+        return redirect('/home')
+    
+        
+
 
 
 def logout(request):
-    pass
+    request.session['logado'] = None
+    return redirect('/auth/login')
+    
 
 def senhas_nao_iguais(senha,senha2):
     return senha != senha2

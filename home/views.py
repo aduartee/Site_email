@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
 from login.views import login,cadastro
 from login import models
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.core.mail import EmailMultiAlternatives
 from django.template.loader import render_to_string
@@ -128,6 +128,12 @@ def envia_email(request):
     return render(request, 'cdntv.html')
 
 def home(request):
+    if request.session['logado']:
         return render(request, 'home.html')
+    
+    else:
+        return redirect('/auth/login/?status=2')
+    
+
     
 
