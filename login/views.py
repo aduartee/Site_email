@@ -26,6 +26,10 @@ def valida_cadastro(request):
     if len(senha2) < 4:
         return redirect('/auth/cadastro/?status=2')
     
+    if senhas_diferentes(senha2, confirmasenha):
+        return redirect('/auth/cadastro/?status=10')
+
+    
     # Verifica se já existe algum outro usuario com esse email
     cadastro = Cadastrar.objects.filter(email2 = email2)
     
@@ -59,11 +63,14 @@ def valida_login(request):
     
     senha2 = sha256(senha2.encode()).hexdigest()
     
+    # Faz a validação se o usuario e senha existe no banco de dados
     usuario = Cadastrar.objects.filter(usuario2 = usuario2).filter(senha2 = senha2)
     
+    # Se o usuario não existe, ele retorna um status = 0
     if len(usuario) == 0:
         return redirect('/auth/login/?status=1')
     
+    # Se o usuario existe, ele envia para o a pagina home. Nessa situação usei o session para realizar o login
     elif len(usuario) > 0:
         request.session['logado'] = True
         return redirect('/home')
@@ -77,12 +84,13 @@ def logout(request):
     return redirect('/auth/login')
     
 
-def senhas_nao_iguais(senha,senha2):
+def senhas_diferentes(senha,senha2):
     return senha != senha2
     
 def usuario_existente():
     pass
-        
+
+
         
 def campos_vazios(email,senha):
     return email == "" or senha == ""

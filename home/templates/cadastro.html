@@ -51,6 +51,12 @@
                 Erro interno...
             </div>
             {% endif %}
+
+            {% if status == '10' %}
+            <div class="alert alert-danger" role="alert">
+                As senhas devem ser iguais
+            </div>
+            {% endif %}
         </div>
         <section class="area-login">
             <div class="login animate__animated animate__backInLeft">
@@ -69,7 +75,7 @@
                     <input type="password" placeholder="Confirmar senha" autocomplete="off" name="confirmasenha"
                         value="{{confirmasenha}}" required autofocus>
                     <input class="btn btn-dark" type="submit" value="Cadastrar">
-                    <a href="{% url 'login' %}" class="btn btn-dark">Login</a>
+                    <a href="{% url 'login' %}" class="btn btn-dark">Retornar para Login</a>
 
                 </form>
             </div>

@@ -13,6 +13,14 @@ import re
 from django.conf import settings
 
 
+
+def home(request):
+    if request.session['logado']:
+        return render(request, 'home.html')
+    
+    else:
+        return redirect('/auth/login/?status=2')
+    
 def cdntv(request):
     ### Se a request for do tip GET, o retorno será a pagina renderizada novamente
     if request.method == "GET":
@@ -52,7 +60,6 @@ def cdntv(request):
     
     return HttpResponse('Email CDNTV enviado!')
 
-
 def vod(request):
     if request.method == "GET":
         return render(request, 'vod.html')
@@ -87,7 +94,6 @@ def vod(request):
         
     return HttpResponse('Email do VOD enviado')
         
-        
 def aplicativos(request):
     if request.method == 'GET':
         return render(request, 'aplicativos.html')
@@ -116,7 +122,7 @@ def aplicativos(request):
         )        
         aplicativos.save()
         
-        html_content = render_to_string('email\emailvod.html',{'nome': nome, 'mobile': mobile, 'stb':stb, 'ios': ios, 'apks' : apks, 'email3' : email3, 'demanda3' : demanda3, 'nprovedor2' : nprovedor2})
+        html_content = render_to_string('emailapp.html',{'nome': nome, 'mobile': mobile, 'stb':stb, 'ios': ios, 'apks' : apks, 'email3' : email3, 'demanda3' : demanda3, 'nprovedor2' : nprovedor2})
         text_content = strip_tags(html_content)
         envia_email = EmailMultiAlternatives(f'CDNTV[#{demanda3}] - {nprovedor2} - Criação dos aplicativos', text_content, settings.EMAIL_HOST_USER, [email3])
         envia_email.attach_alternative(html_content, 'text/html')
@@ -124,15 +130,8 @@ def aplicativos(request):
         return render(request, 'confirma.html')
     
 
-def envia_email(request):
-    return render(request, 'cdntv.html')
 
-def home(request):
-    if request.session['logado']:
-        return render(request, 'home.html')
-    
-    else:
-        return redirect('/auth/login/?status=2')
+
     
 
     
