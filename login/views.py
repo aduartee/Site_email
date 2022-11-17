@@ -74,24 +74,17 @@ def valida_login(request):
     elif len(usuario) > 0:
         request.session['logado'] = True
         return redirect('/home')
-    
         
-
-
-
 def logout(request):
     request.session['logado'] = None
     return redirect('/auth/login')
     
-
 def senhas_diferentes(senha,senha2):
     return senha != senha2
     
 def usuario_existente():
     pass
-
-
-        
+     
 def campos_vazios(email,senha):
     return email == "" or senha == ""
 

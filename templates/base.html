@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="{% static 'cores.css' %}">
   <link rel="stylesheet" href="{% static 'home.css' %}">
   <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
   <link rel="shortcut icon" href="{% static 'img/favicon.png' %}" type="image/x-icon" />
 
   {% block 'head' %}
@@ -43,11 +44,11 @@
         <span class="tooltip">Perfil</span>
       </li>
       <li>
-        <a href="#">
-          <i class='bx bx-chat'></i>
-          <span class="links_name">Tipos de email</span>
+        <a href="{% url 'logout'%}">
+          <i class='bx bx-log-out'></i>
+          <span class="links_name">Logout</span>
         </a>
-        <span class="tooltip">Tipos de email</span>
+        <span class="tooltip">Logout</span>
       </li>
       <li>
         <a href="#">

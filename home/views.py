@@ -2,7 +2,6 @@ import http
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
 from login.views import login,cadastro
-from login import models
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.core.mail import EmailMultiAlternatives
@@ -47,7 +46,7 @@ def cdntv(request):
         cdntv.save()
         html_content = render_to_string('email\emailcdntv.html',{'origin': origin, 'senha': senha, 'edge':edge, 'email': email})
         text_content = strip_tags(html_content)
-        envia_email = EmailMultiAlternatives(f'CDNTV[#{demanda}] - {provedor} - Implementação do serviço', text_content, settings.EMAIL_HOST_USER, [email])
+        envia_email = EmailMultiAlternatives(f'CDNTV[#{demanda}] - {provedor} - Implementação do serviço', text_content, settings.EMAIL_HOST_USER, [email], None, None, None, None, None,['@ativacoes.technobox'])
         envia_email.attach_alternative(html_content, 'text/html')
         envia_email.send()
         
