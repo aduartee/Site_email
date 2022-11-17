@@ -121,9 +121,9 @@ def aplicativos(request):
         )        
         aplicativos.save()
         
-        html_content = render_to_string('emailapp.html',{'nome': nome, 'mobile': mobile, 'stb':stb, 'ios': ios, 'apks' : apks, 'email3' : email3, 'demanda3' : demanda3, 'nprovedor2' : nprovedor2})
+        html_content = render_to_string('email/emailapp.html',{'nome': nome, 'mobile': mobile, 'stb':stb, 'ios': ios, 'apks' : apks, 'email3' : email3, 'demanda3' : demanda3, 'nprovedor2' : nprovedor2})
         text_content = strip_tags(html_content)
-        envia_email = EmailMultiAlternatives(f'CDNTV[#{demanda3}] - {nprovedor2} - Criação dos aplicativos', text_content, settings.EMAIL_HOST_USER, [email3])
+        envia_email = EmailMultiAlternatives(f'CDNTV[#{demanda3}] - {nprovedor2} - Criação dos aplicativos', text_content, settings.EMAIL_HOST_USER, [email3], None, None, None, None, None, ['ziksduarte@gmail.com'])
         envia_email.attach_alternative(html_content, 'text/html')
         envia_email.send()
         return render(request, 'confirma.html')

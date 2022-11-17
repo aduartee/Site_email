@@ -38,8 +38,8 @@
 
             <form action="{% url 'valida_login'%}" method="POST">
                 {% csrf_token %}
-                <input type="text" placeholder="Nome do usuario" autocomplete="off" name="usuario2" value="{{usuario2}}" required autofocus>
-                <input type="password" placeholder="Senha" autocomplete="off" name= "senha2" value="{{senha2}}" required autofocus>
+                <input type="text" placeholder="Nome do usuario"  name="usuario2" value="{{usuario2}}" required autofocus>
+                <input type="password" placeholder="Senha"  name= "senha2" value="{{senha2}}" required autofocus>
                 <input class="btn btn-dark" type="submit" value="Entrar">
             </form>
             <p>Cadastrar novo usuario <a href="{% url 'cadastro' %}">Criar conta</a></p>
