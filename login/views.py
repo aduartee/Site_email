@@ -18,7 +18,7 @@ def valida_cadastro(request):
     confirmasenha = request.POST.get('confirmasenha')
     
     ## Valida se o usuario não digitou nada no campo de usuario
-    if len(usuario2.strip()) == 0 or len(usuario2.strip()) == 0:
+    if len(usuario2.strip()) == 0 or len(senha2.strip()) == 0:
         # Vai redirecionar para a pagina de login, será passado um status = 1 
         return redirect('/auth/cadastro/?status=1')
     

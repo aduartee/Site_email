@@ -10,7 +10,7 @@
 
 {% block 'dashboard' %}
 <div class="adicionar-email">
-    <h1 id="titulo" style="margin-left:30px;"> Criando o email do VOD </h1>
+    <h1 class="animate__animated animate__fadeInDown"  style="margin-left:30px;"> Criando o email do VOD </h1>
     <form action="{% url 'vod' %}" method="POST">
         {% csrf_token %}
         <div class="total" style="margin-left: 35%;">
@@ -78,7 +78,7 @@
 
 
     <div class="row">
-        <div class="column" style="background-color:#333333; ">
+        <div class="column animate__animated animate__fadeInDown" style="background-color:#333333; ">
             <h2>Lembrando que os acessos devem seguir esses modelos:</h2>
             <p>Manager: http://45.175.124.26:8089/ </p>
             <p>Edge: https://subdomio_cliente.com.br/</p>

@@ -10,7 +10,7 @@
 
 {% block 'dashboard' %}
 <div class="adicionar-email">
-    <h1 id="titulo" style="margin-left:30px;"> Criando o email dos Aplicativos </h1>
+    <h1 class="animate__animated animate__fadeInLeft" style="margin-left:30px;"> Criando o email dos Aplicativos </h1>
     <form action="{% url 'aplicativos' %}" method="POST">
         {% csrf_token %}
         <div class="total" style="margin-left: 35%;">
@@ -99,8 +99,8 @@
 
 
 
-    <div class="row">
-        <div class="column" style="background-color:#333333; ">
+    <div class="row"> 
+        <div class="column animate__animated animate__fadeInDown" style="background-color:#333333; ">
             <h2>Lembrando que os acessos devem seguir esses modelos:</h2>
             <p>Link app mobile: https://play.google.com/store/apps/details?id=br.com.provedor.mobile</p>
             <p>Link app STB: https://play.google.com/store/apps/details?id=br.com.provedor.stb</p>
