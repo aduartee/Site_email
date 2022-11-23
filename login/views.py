@@ -16,7 +16,6 @@ def cadastro(request):
 
 def valida_cadastro(request):
     usuario2 = request.POST.get('usuario2')
-    email2 = request.POST.get('email2')
     senha2 = request.POST.get('senha2')
     confirmasenha = request.POST.get('confirmasenha')
     
@@ -34,7 +33,7 @@ def valida_cadastro(request):
     
     
     # Verifica se já existe algum outro usuario com esse email
-    cadastro = Cadastrar.objects.filter(email2 = email2)
+    cadastro = Cadastrar.objects.filter(usuario2 = usuario2)
     
     # Nesse caso, se o tamanho for maior que 0, logo ele existe, então ele retorna um status = 3
     if len(cadastro) > 0:
@@ -46,7 +45,6 @@ def valida_cadastro(request):
         
         cadastro = Cadastrar(
             usuario2 = usuario2,
-            email2 = email2,
             senha2 = senha2,
             confirmasenha = confirmasenha
         )
@@ -54,7 +52,7 @@ def valida_cadastro(request):
         return redirect('/auth/cadastro/?status=0')
 
     except:
-        print( redirect('/auth/cadastro/?status=4'))
+        return redirect('/auth/cadastro/?status=4')
         
 def login(request):
     status = request.GET.get('status')
@@ -86,8 +84,6 @@ def logout(request):
 def senhas_diferentes(senha,senha2):
     return senha != senha2
     
-def usuario_existente():
-    pass
      
 def campos_vazios(email,senha):
     return email == "" or senha == ""
