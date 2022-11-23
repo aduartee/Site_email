@@ -32,6 +32,7 @@ class Aplicativos(models.Model):
     stb = models.CharField(max_length=50)
     ios = models.CharField(max_length=50)
     apks = models.CharField(max_length=60)
+    self_email = models.CharField(max_length=40, default='EMAIL')
     email3 = models.CharField(max_length=62)
     demanda3 = models.CharField(max_length=5)
     nprovedor2 =  models.CharField(max_length= 52)

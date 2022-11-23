@@ -4,7 +4,10 @@ from login.models import Cadastrar
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
 from hashlib import sha256
+from django.template.loader import render_to_string
 from django.contrib.auth import login as login_django
+from django.utils.html import strip_tags
+
 
 
 def cadastro(request):
@@ -28,7 +31,7 @@ def valida_cadastro(request):
     
     if senhas_diferentes(senha2, confirmasenha):
         return redirect('/auth/cadastro/?status=10')
-
+    
     
     # Verifica se já existe algum outro usuario com esse email
     cadastro = Cadastrar.objects.filter(email2 = email2)
@@ -51,8 +54,8 @@ def valida_cadastro(request):
         return redirect('/auth/cadastro/?status=0')
 
     except:
-        return redirect('/auth/cadastro/?status=4')
-
+        print( redirect('/auth/cadastro/?status=4'))
+        
 def login(request):
     status = request.GET.get('status')
     return render(request, 'login.html', {'status': status})
@@ -69,6 +72,7 @@ def valida_login(request):
     # Se o usuario não existe, ele retorna um status = 0
     if len(usuario) == 0:
         return redirect('/auth/login/?status=1')
+    
     
     # Se o usuario existe, ele envia para o a pagina home. Nessa situação usei o session para realizar o login
     elif len(usuario) > 0:

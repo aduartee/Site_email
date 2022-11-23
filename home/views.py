@@ -2,6 +2,7 @@ import http
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
 from login.views import login,cadastro
+from login.views import valida_cadastro, valida_login
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.core.mail import EmailMultiAlternatives
@@ -104,6 +105,7 @@ def aplicativos(request):
         ios = request.POST.get('ios')
         apks = request.POST.get('apks')
         email3 = request.POST.get('email3')
+        self_email = request.POST.get('self_email')
         demanda3 = request.POST.get('demanda3')
         nprovedor2 = request.POST.get('nprovedor2')
         
@@ -114,22 +116,22 @@ def aplicativos(request):
             stb = stb,
             ios = ios, 
             apks = apks,
+            self_email = self_email,
             email3 = email3,
             demanda3 = demanda3, 
             nprovedor2 = nprovedor2
-            
         )        
         aplicativos.save()
         
         html_content = render_to_string('email/emailapp.html',{'nome': nome, 'mobile': mobile, 'stb':stb, 'ios': ios, 'apks' : apks, 'email3' : email3, 'demanda3' : demanda3, 'nprovedor2' : nprovedor2})
         text_content = strip_tags(html_content)
-        envia_email = EmailMultiAlternatives(f'CDNTV[#{demanda3}] - {nprovedor2} - Criação dos aplicativos', text_content, settings.EMAIL_HOST_USER, [email3], None, None, None, None, None, ['ziksduarte@gmail.com'])
+        envia_email = EmailMultiAlternatives(f'CDNTV[#{demanda3}] - {nprovedor2} - Criação dos aplicativos', text_content, self_email, [email3], None, None, None, None, None, ['ziksduarte@gmail.com'])
         envia_email.attach_alternative(html_content, 'text/html')
         envia_email.send()
         return render(request, 'confirma.html')
     
 
-
+    
 
     
 

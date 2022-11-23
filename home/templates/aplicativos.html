@@ -13,7 +13,7 @@
     <h1 class="animate__animated animate__fadeInLeft" style="margin-left:30px;"> Criando o email dos Aplicativos </h1>
     <form action="{% url 'aplicativos' %}" method="POST">
         {% csrf_token %}
-        <div class="total" style="margin-left: 35%;">
+        <div class="animate__animated animate__fadeInLeft total" style="margin-left: 35%;">
             <div style="margin-top: 20px; margin-left:20px;">
                 <div class="form">
                     <input type="text" autocomplete="off" name="nome" value="{{nome}}" required />
@@ -65,6 +65,15 @@
                     <label for="text" class="label-name">
                         <span class="content-name">
                             Email do cliente:
+                        </span>
+                    </label>
+                </div>
+
+                <div class="form">
+                    <input type="text" autocomplete="off" name="self_email" value="{{self_email}}" required />
+                    <label for="text" class="label-name">
+                        <span class="content-name">
+                            Digite seu email:
                         </span>
                     </label>
                 </div>
