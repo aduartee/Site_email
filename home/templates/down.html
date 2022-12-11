@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block 'head' %}
+<link rel="stylesheet" href="{% static 'home/down.css' %}">
+<link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500&display=swap" rel="stylesheet">
+{% endblock %}
+
+
+{% block 'dashboard' %}
+
+<div class="animate__animated animate__zoomIn">
+<div class="cont2" style="width:14.5%">
+    <img src=" {% static 'img/down_origin.png' %}" class="imagem2">
+    <div class="middled2">
+      <div><a href="{% url 'downorigin' %}"><button class="button2 botao_preto2">Email Origin</button></a></div>
+    </div>
+  </div>
+  
+  <div class="cont3" style="width:14.5%">
+    <img src=" {% static 'img/down_edge.png' %}" class="imagem3">
+    <div class="middled3">
+      <div><a href="{% url 'cdntv' %}"><button class="button2 botao_preto3">Email Edge</button></a></div>
+    </div>
+  </div>
+
+  <div class="cont4" style="width:14.5%">
+    <img src=" {% static 'img/down_vod.png' %}" class="imagem4">
+    <div class="middled4">
+      <div><a href="{% url 'cdntv' %}"><button class="button2 botao_preto2">Email VOD</button></a></div>
+    </div>
+  </div>
+
+  <div class="cont5" style="width:14.5%">
+    <img src=" {% static 'img/origin_edge_vod.png' %}" class="imagem5">
+    <div class="middled5">
+      <div><a href="{% url 'cdntv' %}"><button class="button5 botao_preto5">Email Origin Edge VOD </button></a></div>
+    </div>
+  </div>
+
+  <div class="cont6" style="width:14.5%">
+    <img src=" {% static 'img/edge_vod.png' %}" class="imagem6">
+    <div class="middled6">
+      <div><a href="{% url 'cdntv' %}"><button class="button6 botao_preto6">Email Edge e VOD</button></a></div>
+    </div>
+  </div>
+
+  <div class="cont7" style="width:14.5%">
+    <img src=" {% static 'img/origin_vod.png' %}" class="imagem7">
+    <div class="middled7">
+      <div><a href="{% url 'cdntv' %}"><button class="button7 botao_preto7">Email Origin e VOD</button></a></div>
+    </div>
+  </div>
+
+</div>
+{% endblock %}
+
+{% block 'body' %}
+{% endblock %}
+<script src="{% static 'js/base.js' %}"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+
+

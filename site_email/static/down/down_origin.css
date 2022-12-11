@@ -1,0 +1,219 @@
+body {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #2A2A2A;
+    font-family: "montserrat", sans-serif;
+    font-weight: 500;
+    color: #fff;
+    overflow: hidden;
+}
+
+h1 {
+    padding-bottom: 30px;
+    font-weight: 900;
+    font-size: 35px;
+    right: 30%;
+}
+
+.btn-principal {
+    position: -webkit-sticky;
+    margin-left: -55%;
+    height: 50px;
+    width: 70px;
+}
+
+
+
+.form {
+    width: 45%;
+    position: relative;
+    right: 55%;
+    height: 120px;
+    overflow: hidden;
+}
+
+.form input {
+    width: 100%;
+    height: 100%;
+    color: #fff;
+    padding-top: 20px;
+    border: none;
+    background-color: #2A2A2A;
+}
+
+.form label {
+    position: absolute;
+    bottom: 25px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    border-bottom: 1px solid white;
+}
+
+.form label::after {
+    content: "";
+    position: absolute;
+    bottom: -1px;
+    left: -2px;
+    width: 100%;
+    height: 100%;
+    border-bottom: 3px solid #DA632C;
+    transform: translateX(-100%);
+    transition: all 0.3s ease;
+}
+
+.content-name {
+    position: absolute;
+    bottom: 0px;
+    left: 5px;
+    padding-bottom: 5px;
+    transition: all 0.7s ease;
+}
+
+.form input:focus {
+    outline: none;
+}
+
+.form input:focus+.label-name .content-name,
+.form input:valid+.label-name .content-name {
+    transform: translateY(-80%);
+    font-size: 14px;
+    left: 0px;
+    color: #DA632C;
+}
+
+.form input:focus+.label-name::after,
+.form input:valid+.label-name::after {
+    transform: translateX(0%);
+}
+
+.column {
+    float: left;
+    margin-top: -50%;
+    margin-left: 10%;
+    width: 80%;
+    padding: 10px;
+    height: 250px;
+}
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+
+@media screen and (max-width: 600px) {
+    .column {
+        width: 100%;
+    }
+}
+
+
+.middle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.btn {
+    position: relative;
+    display: block;
+    color: white;
+    font-size: 14px;
+    font-family: "montserrat";
+    text-decoration: none;
+    margin: 30px 0;
+    border: 2px solid #DA632C;
+    padding: 14px 60px;
+    text-transform: uppercase;
+    overflow: hidden;
+    transition: 1s all ease;
+}
+
+.btn::before {
+    background: #DA632C;
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+    transition: all 0.7s ease;
+}
+
+.btn1::before {
+    width: 0%;
+    height: 100%;
+}
+
+.btn1:hover::before {
+    width: 100%;
+}
+
+.frame {
+    width: 90%;
+    margin: 40px auto;
+    margin-left: -94%;
+    margin-top: 0%;
+    text-align: center;
+}
+
+button {
+    margin: 20px;
+    outline: none;
+}
+
+.custom-btn {
+    width: 130px;
+    height: 50px;
+    padding: 10px 25px;
+    border: 1px solid #da632c70;
+    font-family: 'Lato', sans-serif;
+    font-weight: 500;
+    font-size: 20px;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    display: inline-block;
+}
+
+.btn-16 {
+    background: #27282982;
+    color: #da632c;
+    z-index: 1;
+}
+
+.btn-16:after {
+    position: absolute;
+    content: "";
+    width: 0;
+    height: 100%;
+    top: 0;
+    left: 0;
+    direction: rtl;
+    z-index: -1;
+    background: #da632c;
+    transition: all 0.7s ease;
+}
+
+.btn-16:hover {
+    color: #000;
+}
+
+.btn-16:hover:after {
+    left: auto;
+    right: 0;
+    width: 100%;
+}
+
+.btn-16:active {
+    top: 6px;
+}

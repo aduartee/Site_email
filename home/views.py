@@ -134,6 +134,24 @@ def down(request):
     if request.method == 'GET':
         return render(request, 'down.html')
     
+def downorigin(request):
+    if request.method == 'GET':
+        return render(request, 'down_origin.html')
+    
+    elif request.method == 'POST':
+        origin4 = request.POST.get('origin4')
+        email4 = request.POST.get('email4')
+        ndemanda4 = request.POST.get('ndemanda4')
+        nprovdor14 = request.POST.get('nprovedor4')
+        
+        
+        
+        
+    return render(request, 'confirma.html')
+        
+
+
+    
         
 
     
