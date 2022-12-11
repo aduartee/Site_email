@@ -8,7 +8,7 @@ from django.http import HttpResponse
 from django.core.mail import EmailMultiAlternatives
 from django.template.loader import render_to_string
 from django.utils.html import strip_tags
-from home.models import Cdntv, VOD, Aplicativos
+from home.models import Cdntv, VOD, Aplicativos, Origindown
 import re
 from django.conf import settings
 
@@ -142,7 +142,19 @@ def downorigin(request):
         origin4 = request.POST.get('origin4')
         email4 = request.POST.get('email4')
         ndemanda4 = request.POST.get('ndemanda4')
-        nprovdor14 = request.POST.get('nprovedor4')
+        nprovdor4 = request.POST.get('nprovedor4')
+        
+        down_origin = Origindown(
+            origin4 = origin4,
+            email4= email4,
+            ndemanda4 = ndemanda4,
+            nprovdor4 = nprovdor4
+        )
+        
+        down_origin.save()
+        
+        if len(origin4) < 0:
+            return 
         
         
         

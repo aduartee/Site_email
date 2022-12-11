@@ -9,7 +9,7 @@
 
 {% block 'dashboard' %}
 <div class="adicionar-email">
-    <h1 class="animate__animated animate__fadeInDown"  style="margin-left:30px;"> Criando de Origin Down</h1>
+    <h1 class="animate__animated animate__fadeInDown"  style="margin-left:30px;"> Criando email: Origin Down</h1>
     <form action="{% url 'vod' %}" method="POST">
         {% csrf_token %}
         <div class="total" style="margin-left: 35%;">
@@ -17,7 +17,7 @@
 
 
                 <div class="form">
-                    <input type="text" autocomplete="off" name="origin2" value="{{origin2}}" required />
+                    <input type="text" autocomplete="off" name="origin4" value="{{origin4}}" required />
                     <label for="text" class="label-name">
                         <span class="content-name">
                             Ip do Origin:
@@ -26,7 +26,7 @@
                 </div>
 
                 <div class="form">
-                    <input type="text" autocomplete="off" name="email2" value="{{email2}}" required />
+                    <input type="text" autocomplete="off" name="email4" value="{{email4}}" required />
                     <label for="text" class="label-name">
                         <span class="content-name">
                             E-mail do cliente:
@@ -35,7 +35,7 @@
                 </div>
 
                 <div class="form">
-                    <input type="text" autocomplete="off" name="demanda2" value="{{demanda2}}" required />
+                    <input type="text" autocomplete="off" name="ndemanda4" value="{{ndemanda4}}" required />
                     <label for="text" class="label-name">
                         <span class="content-name">
                             Numero da demanda:
@@ -44,7 +44,7 @@
                 </div>
 
                 <div class="form">
-                    <input type="text" autocomplete="off" name="nprovedor" value="{{nprovedor}}" required />
+                    <input type="text" autocomplete="off" name="nprovdor4" value="{{nprovdor4}}" required />
                     <label for="text" class="label-name">
                         <span class="content-name">
                             Nome do provedor:

@@ -41,4 +41,11 @@ class Aplicativos(models.Model):
     def __str__(self) -> str:
         return self.nome
     
+class Origindown(models.Model):
+    origin4 = models.CharField(max_length=30)
+    email4 = models.CharField(max_length=30)
+    ndemanda4 = models.CharField(max_length=30)
+    nprovdor4 = models.CharField(max_length=20)
     
+    def __str__(self) -> str:
+        return self.email4
