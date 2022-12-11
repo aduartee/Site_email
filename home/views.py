@@ -129,7 +129,12 @@ def aplicativos(request):
         envia_email.attach_alternative(html_content, 'text/html')
         envia_email.send()
         return render(request, 'confirma.html')
+
+def down(request):
+    if request.method == 'GET':
+        return render(request, 'down.html')
     
+        
 
     
 

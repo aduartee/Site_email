@@ -6,4 +6,5 @@ urlpatterns = [
     path('vod', views.vod, name='vod'),
     path('cdntv', views.cdntv, name='cdntv'),
     path('aplicativos',views.aplicativos, name='aplicativos'),
+    path('down', views.down, name='down')
     ]
