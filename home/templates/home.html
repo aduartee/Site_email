@@ -3,10 +3,18 @@
 
 {% block 'head' %}
     <link rel="stylesheet" href="{% static 'home/home.css' %}">
+    <link rel="stylesheet" href="{% static 'home/preloader.css' %}">
 {% endblock %}
 
 {% block 'dashboard' %}
 
+<div id="site-content">
+
+<div id="preloader">
+  <span class="dot dot-red"></span>
+  <span class="dot dot-yellow"></span>
+  <span class="dot dot-green"></span>
+</div>
 
 <div id="load"></div>
 <div class="container" style="width:16%">
@@ -38,6 +46,10 @@
   </div>
 </div>
 
+</div> 
+{% block 'body' %}
+<script src="{% static 'js/preloader.js' %}"></script>
+{% endblock%}
 
 {% endblock %}
 
