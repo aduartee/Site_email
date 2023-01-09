@@ -1,32 +1,31 @@
 {% extends 'base.html' %}
 {% load static %}
 
-
 {% block 'head' %}
-<link rel="stylesheet" href="{% static 'down/down_origin.css' %}">
+<link rel="stylesheet" href="{% static 'down/down_edge.css' %}">
 {% endblock %}
 
 
 {% block 'dashboard' %}
 <div class="adicionar-email">
-    <h1 class="animate__animated animate__fadeInDown"  style="margin-left:30px;"> Criando email: Origin Down</h1>
-    <form action="{% url 'downorigin' %}" method="POST">
+    <h1 class="animate__animated animate__fadeInDown"  style="margin-left:30px;"> Criando email: Edge Down</h1>
+    <form action="{% url 'downedge' %}" method="POST">
         {% csrf_token %}
         <div class="total" style="margin-left: 35%;">
             <div style="margin-top: 20px; margin-left:20px;">
 
 
                 <div class="form">
-                    <input type="text" autocomplete="off" name="origin4" value="{{origin4}}" required />
+                    <input type="text" autocomplete="off" name="origin4" value="{{edge5}}" required />
                     <label for="text" class="label-name">
                         <span class="content-name">
-                            Ip do Origin:
+                            Ip do Edge:
                         </span>
                     </label>
                 </div>
 
                 <div class="form">
-                    <input type="text" autocomplete="off" name="email4" value="{{email4}}" required />
+                    <input type="text" autocomplete="off" name="email5" value="{{email5}}" required />
                     <label for="text" class="label-name">
                         <span class="content-name">
                             E-mail do cliente:
@@ -35,7 +34,7 @@
                 </div>
 
                 <div class="form">
-                    <input type="text" autocomplete="off" name="ndemanda4" value="{{ndemanda4}}" required />
+                    <input type="text" autocomplete="off" name="ndemanda5" value="{{ndemanda5}}" required />
                     <label for="text" class="label-name">
                         <span class="content-name">
                             Numero da demanda:
@@ -44,7 +43,7 @@
                 </div>
 
                 <div class="form">
-                    <input type="text" autocomplete="off" name="nprovdor4" value="{{nprovdor4}}" required />
+                    <input type="text" autocomplete="off" name="nprovedor5" value="{{nprovedor5}}" required />
                     <label for="text" class="label-name">
                         <span class="content-name">
                             Nome do provedor:

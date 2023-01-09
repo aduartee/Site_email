@@ -8,7 +8,7 @@ from django.http import HttpResponse
 from django.core.mail import EmailMultiAlternatives
 from django.template.loader import render_to_string
 from django.utils.html import strip_tags
-from home.models import Cdntv, VOD, Aplicativos, Origindown
+from home.models import Cdntv, VOD, Aplicativos, Origindown, Downedge, Downvod, Downoriginvod, Downedgevod
 import re
 from django.conf import settings
 
@@ -152,23 +152,129 @@ def downorigin(request):
         )
         
         down_origin.save()
+ 
+    #html_content = render_to_string('email/emailapp.html',{'nome': nome, 'mobile': mobile, 'stb':stb, 'ios': ios, 'apks' : apks, 'email3' : email3, 'demanda3' : demanda3, 'nprovedor2' : nprovedor2})
+    #text_content = strip_tags(html_content)
+    #envia_email = EmailMultiAlternatives(f'CDNTV[#{demanda3}] - {nprovedor2} - Criação dos aplicativos', text_content, self_email, [email3], None, None, None, None, None, ['ziksduarte@gmail.com'])
+    #envia_email.attach_alternative(html_content, 'text/html')
+    #envia_email.send()
+    #return render(request, 'confirma.html')
+    ##
+
+
+def downedge(request):
+    if request.method == 'GET':
+        return render(request, 'down_edge.html' )
+    
+    elif request.method == 'POST':
+        edge5 = request.POST.get('edge5')
+        email5 = request.POST.get('email5')
+        ndemanda5 =  request.POST.get('ndemanda5')
+        nprovedor5 =  request.POST.get('nprovedor5')
         
-        if len(origin4) < 0:
-            return 
+        downedge = Downedge( 
+        edge5 = edge5,
+        email5 = email5,
+        ndemanda5 = ndemanda5, 
+        nprovedor5 = nprovedor5
+        )
         
+        downedge.save()
         
-        
-        
+   
+   #html_content = render_to_string('email/emailapp.html',{'nome': nome, 'mobile': mobile, 'stb':stb, 'ios': ios, 'apks' : apks, 'email3' : email3, 'demanda3' : demanda3, 'nprovedor2' : nprovedor2})
+    #text_content = strip_tags(html_content)
+    #envia_email = EmailMultiAlternatives(f'CDNTV[#{demanda3}] - {nprovedor2} - Criação dos aplicativos', text_content, self_email, [email3], None, None, None, None, None, ['ziksduarte@gmail.com'])
+    #envia_email.attach_alternative(html_content, 'text/html')
+    #envia_email.send()
+    #return render(request, 'confirma.html')
+
     return render(request, 'confirma.html')
+
+
+def downvod(request):
+    if request.method == 'GET':
+        return render(request, 'down_vod.html')
+    
+    elif request.method == 'POST':
+        vod = request.POST.get('vod')
+        email6 = request.POST.get('email6')
+        ndemanda6 = request.POST.get('ndemanda6')
+        nprovedor6 = request.POST.get('nprovedor6')
         
+        downvod = Downvod(
+            vod = vod, 
+            email6 = email6,
+            ndemanda6 = ndemanda6,
+            nprovedor6 = nprovedor6
+        )
+        
+        downvod.save()
+    
+        return render(request, 'confirma.html')
+    
+    
+def downoriginvod(request):
+    if request.method == 'GET':
+        return render(request, 'down_originvod.html')
+    
+    elif request.method == 'POST':
+        origin7 = request.POST.get('origin6')
+        vod1 = request.POST.get('vod')
+        email7 = request.POST.get('email7')
+        ndemanda7 = request.POST.get('ndemanda7')
+        nprovedor7 = request.POST.get('nprovedor7')
+        
+        downoriginvod = Downoriginvod(
+            origin7 = origin7,
+            vod1 = vod1,
+            email7 = email7,
+            ndemanda7 = ndemanda7,
+            nprovedor7 = nprovedor7
+        ) 
+        
+        downoriginvod.save()
+        
+    #html_content = render_to_string('email/emailapp.html',{'nome': nome, 'mobile': mobile, 'stb':stb, 'ios': ios, 'apks' : apks, 'email3' : email3, 'demanda3' : demanda3, 'nprovedor2' : nprovedor2})
+    #text_content = strip_tags(html_content)
+    #envia_email = EmailMultiAlternatives(f'CDNTV[#{demanda3}] - {nprovedor2} - Criação dos aplicativos', text_content, self_email, [email3], None, None, None, None, None, ['ziksduarte@gmail.com'])
+    #envia_email.attach_alternative(html_content, 'text/html')
+    #envia_email.send()
 
+    return render(request, 'confirma.html')
+
+
+def downedgevod(request):
+    if request.method == 'GET':
+        return render(request, 'down_edgevod.html')        
+    
+    elif request.method == 'POST':
+        edge8 = request.POST.get('edge8')
+        vod2 = request.POST.get('vod2')
+        email8 = request.POST.get('email8')
+        ndemanda8 = request.POST.get('ndemanda8')
+        nprovedor8 = request.POST.get('nprovedor8')
+        
+        downedgevod = Downedgevod(
+            edge8 = edge8,
+            vod2 = vod2,
+            email8 = email8,
+            ndemanda8 = ndemanda8,
+            nprovedor8 = nprovedor8
+        )
+        
+        downedgevod.save()
+        
+    #html_content = render_to_string('email/emailapp.html',{'nome': nome, 'mobile': mobile, 'stb':stb, 'ios': ios, 'apks' : apks, 'email3' : email3, 'demanda3' : demanda3, 'nprovedor2' : nprovedor2})
+    #text_content = strip_tags(html_content)
+    #envia_email = EmailMultiAlternatives(f'CDNTV[#{demanda3}] - {nprovedor2} - Criação dos aplicativos', text_content, self_email, [email3], None, None, None, None, None, ['ziksduarte@gmail.com'])
+    #envia_email.attach_alternative(html_content, 'text/html')
+    #envia_email.send()
+
+    return render(request, 'confirma.html')
 
     
         
-
-    
-
-    
-
-    
-
+        
+        
+  

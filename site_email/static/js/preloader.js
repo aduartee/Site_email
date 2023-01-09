@@ -1,7 +1,7 @@
 window.addEventListener("load", function() {
     setTimeout(function() {
       document.getElementById("preloader").style.opacity = "0";
-    }, 600);
+    }, 500);
   });
   
   document.getElementById("preloader").addEventListener("transitionend", function() {

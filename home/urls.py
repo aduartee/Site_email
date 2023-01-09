@@ -7,5 +7,9 @@ urlpatterns = [
     path('cdntv', views.cdntv, name='cdntv'),
     path('aplicativos',views.aplicativos, name='aplicativos'),
     path('down/', views.down, name='down'),
-    path('downorigin/', views.downorigin, name='downorigin')
+    path('downorigin/', views.downorigin, name='downorigin'),
+    path('downedge/', views.downedge, name='downedge'),
+	path('downvod/', views.downvod, name='downvod'),
+    path('downoriginvod/', views.downoriginvod, name='downoriginvod'),
+    path('downedgevod/', views.downedgevod, name='downedgevod')
     ]
