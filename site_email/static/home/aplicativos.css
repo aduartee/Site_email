@@ -34,7 +34,6 @@ h1 {
     position: relative;
     right: 55%;
     height: 120px;
-    overflow: hidden;
 }
 
 .form input {
@@ -133,7 +132,6 @@ h1 {
   border: 2px solid #DA632C;
   padding: 14px 60px;
   text-transform: uppercase;
-  overflow: hidden;
   transition: 1s all ease;
 }
 .btn::before{

@@ -8,7 +8,7 @@ from django.http import HttpResponse
 from django.core.mail import EmailMultiAlternatives
 from django.template.loader import render_to_string
 from django.utils.html import strip_tags
-from home.models import Cdntv, VOD, Aplicativos, Origindown, Downedge, Downvod, Downoriginvod, Downedgevod
+from home.models import Cdntv, VOD, Aplicativos, Origindown, Downedge, Downvod, Downoriginvod, Downedgevod, Downoriginedgevod
 import re
 from django.conf import settings
 
@@ -44,10 +44,11 @@ def cdntv(request):
            provedor = provedor
         )
         
+        
         cdntv.save()
         html_content = render_to_string('email\emailcdntv.html',{'origin': origin, 'senha': senha, 'edge':edge, 'email': email})
         text_content = strip_tags(html_content)
-        envia_email = EmailMultiAlternatives(f'CDNTV[#{demanda}] - {provedor} - Implementação do serviço', text_content, settings.EMAIL_HOST_USER, [email], None, None, None, None, None,['@ativacoes.technobox'])
+        envia_email = EmailMultiAlternatives(f'CDNTV[#{demanda}] - {provedor} - Implementação do serviço', text_content, settings.EMAIL_HOST_USER, [email], None, None, None, None, None,['ativacoes.technobox'])
         envia_email.attach_alternative(html_content, 'text/html')
         envia_email.send()
         
@@ -142,24 +143,24 @@ def downorigin(request):
         origin4 = request.POST.get('origin4')
         email4 = request.POST.get('email4')
         ndemanda4 = request.POST.get('ndemanda4')
-        nprovdor4 = request.POST.get('nprovedor4')
+        nprovedor4 = request.POST.get('nprovedor4')
         
         down_origin = Origindown(
             origin4 = origin4,
             email4= email4,
             ndemanda4 = ndemanda4,
-            nprovdor4 = nprovdor4
+            nprovedor4 = nprovedor4
         )
         
         down_origin.save()
  
-    #html_content = render_to_string('email/emailapp.html',{'nome': nome, 'mobile': mobile, 'stb':stb, 'ios': ios, 'apks' : apks, 'email3' : email3, 'demanda3' : demanda3, 'nprovedor2' : nprovedor2})
-    #text_content = strip_tags(html_content)
-    #envia_email = EmailMultiAlternatives(f'CDNTV[#{demanda3}] - {nprovedor2} - Criação dos aplicativos', text_content, self_email, [email3], None, None, None, None, None, ['ziksduarte@gmail.com'])
-    #envia_email.attach_alternative(html_content, 'text/html')
-    #envia_email.send()
-    #return render(request, 'confirma.html')
-    ##
+        html_content = render_to_string('email/down/downorigin.html', {'origin4': origin4, 'email4': email4, 'ndemanda4':ndemanda4, 'nprovdor4': nprovedor4})
+        text_content = strip_tags(html_content)
+        envia_email = EmailMultiAlternatives(f'CDNTV[#{ndemanda4}] - {nprovedor4} - Origin Donw', text_content, settings.EMAIL_HOST_USER, [email4], None, None, None, None, None, ['ziksduarte@gmail.com'])
+        envia_email.attach_alternative(html_content, 'text/html')
+        envia_email.send()
+        return render(request, 'confirma.html')
+        
 
 
 def downedge(request):
@@ -182,12 +183,12 @@ def downedge(request):
         downedge.save()
         
    
-   #html_content = render_to_string('email/emailapp.html',{'nome': nome, 'mobile': mobile, 'stb':stb, 'ios': ios, 'apks' : apks, 'email3' : email3, 'demanda3' : demanda3, 'nprovedor2' : nprovedor2})
-    #text_content = strip_tags(html_content)
-    #envia_email = EmailMultiAlternatives(f'CDNTV[#{demanda3}] - {nprovedor2} - Criação dos aplicativos', text_content, self_email, [email3], None, None, None, None, None, ['ziksduarte@gmail.com'])
-    #envia_email.attach_alternative(html_content, 'text/html')
-    #envia_email.send()
-    #return render(request, 'confirma.html')
+        html_content = render_to_string('email/down/downedge.html', {'edge5': edge5, 'email5': email5, 'ndemanda5':ndemanda5, 'nprovedor5': nprovedor5})
+        text_content = strip_tags(html_content)
+        envia_email = EmailMultiAlternatives(f'CDNTV[#{ndemanda5}] - {nprovedor5} - Edge Donw', text_content, settings.EMAIL_HOST_USER, [email5], None, None, None, None, None, ['ziksduarte@gmail.com'])
+        envia_email.attach_alternative(html_content, 'text/html')
+        envia_email.send()
+        return render(request, 'confirma.html')
 
     return render(request, 'confirma.html')
 
@@ -219,14 +220,14 @@ def downoriginvod(request):
         return render(request, 'down_originvod.html')
     
     elif request.method == 'POST':
-        origin7 = request.POST.get('origin6')
+        origin6 = request.POST.get('origin6')
         vod1 = request.POST.get('vod')
         email7 = request.POST.get('email7')
         ndemanda7 = request.POST.get('ndemanda7')
         nprovedor7 = request.POST.get('nprovedor7')
         
         downoriginvod = Downoriginvod(
-            origin7 = origin7,
+            origin6 = origin6,
             vod1 = vod1,
             email7 = email7,
             ndemanda7 = ndemanda7,
@@ -273,8 +274,34 @@ def downedgevod(request):
 
     return render(request, 'confirma.html')
 
+
+def downoriginedgevod(request):
+    if request.method == 'GET':
+        return render(request, 'down_originedgevod.html')
     
+    elif request.method == 'POST':
+        origin7 = request.POST.get('origin7')
+        edge9 = request.POST.get('edge9')
+        vod3 = request.POST.get('vod3')
+        email9 = request.POST.get('email9')
+        ndemanda9 = request.POST.get('ndemanda9')
+        nprovedor9 = request.POST.get('nprovedor9')
         
+        downoriginedgevod = Downoriginedgevod(
+            origin7 = origin7, 
+            edge9 = edge9,
+            vod3 = vod3,
+            email9 = email9,
+            ndemanda9 = ndemanda9,
+            nprovedor9 = nprovedor9          
+        )
         
+        downoriginedgevod.save()
         
+        #html_content = render_to_string('email/emailapp.html',{'nome': nome, 'mobile': mobile, 'stb':stb, 'ios': ios, 'apks' : apks, 'email3' : email3, 'demanda3' : demanda3, 'nprovedor2' : nprovedor2})
+        #text_content = strip_tags(html_content)
+        #envia_email = EmailMultiAlternatives(f'CDNTV[#{demanda3}] - {nprovedor2} - Criação dos aplicativos', text_content, self_email, [email3], None, None, None, None, None, ['ziksduarte@gmail.com'])
+        #envia_email.attach_alternative(html_content, 'text/html')
+        #envia_email.send()
+            
   

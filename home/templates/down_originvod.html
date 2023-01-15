@@ -16,7 +16,7 @@
             <div style="margin-top: 20px; margin-left:20px;">
 
                 <div class="form">
-                    <input type="text" autocomplete="off" name="origin7" value="{{origin7}}" required />
+                    <input type="text" autocomplete="off" id="origin" name="origin7" value="{{origin7}}" required />
                     <label for="text" class="label-name">
                         <span class="content-name">
                             Ip do Origin:
@@ -25,7 +25,7 @@
                 </div>
 
                 <div class="form">
-                    <input type="text" autocomplete="off" name="vod1" value="{{vod1}}" required />
+                    <input type="text" autocomplete="off"  id="vod" name="vod1" value="{{vod1}}" required />
                     <label for="text" class="label-name">
                         <span class="content-name">
                             Ip do Vod:
@@ -34,7 +34,7 @@
                 </div>
 
                 <div class="form">
-                    <input type="text" autocomplete="off" name="email6" value="{{email6}}" required />
+                    <input type="text" autocomplete="off"  id="cliente" name="email6" value="{{email6}}" required />
                     <label for="text" class="label-name">
                         <span class="content-name">
                             E-mail do cliente:
@@ -43,7 +43,7 @@
                 </div>
 
                 <div class="form">
-                    <input type="text" autocomplete="off" name="ndemanda6" value="{{ndemanda6}}" required />
+                    <input type="text" autocomplete="off"  id="demanda" name="ndemanda6" value="{{ndemanda6}}" required />
                     <label for="text" class="label-name">
                         <span class="content-name">
                             Numero da demanda:
@@ -52,7 +52,7 @@
                 </div>
 
                 <div class="form">
-                    <input type="text" autocomplete="off" name="nprovdor6" value="{{nprovdor6}}" required />
+                    <input type="text" autocomplete="off"  id="provedor" name="nprovdor6" value="{{nprovdor6}}" required />
                     <label for="text" class="label-name">
                         <span class="content-name">
                             Nome do provedor:
@@ -69,13 +69,11 @@
     </form>
     <div class="row">
         <div class="column animate__animated animate__fadeInDown" style="background-color:#333333; ">
-            <h2>Lembrando que os acessos devem seguir esses modelos:</h2>
-            <p>Ip: 127.0.0.1 </p>
-            <p>Titulo do email: CDNTV[#DEMANDA] PROVEDOR - Tipo do serviço</p>
-        </div>
-
+            <div id="example"></div>
         
     </div>
+
+    <script src="{% static 'js/down/DownVodOrigin.js' %}"></script>
 </div>
 {% endblock %}
 

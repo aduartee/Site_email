@@ -9,13 +9,14 @@
 
 {% block 'dashboard' %}
 <div class="adicionar-email">
-    <h1 class="animate__animated animate__fadeInDown"  style="margin-left:30px;"> Criando email: Origin Down</h1>
-    <form action="{% url 'downorigin' %}" method="POST">
+    <h1 class="animate__animated animate__fadeInDown"  style="margin-left:30px;"> Criando email: Origin, Edge e Vod Down</h1>
+    <form action="{% url 'downoriginedgevod' %}" method="POST">
         {% csrf_token %}
         <div class="total" style="margin-left: 35%;">
             <div style="margin-top: 20px; margin-left:20px;">
+
                 <div class="form">
-                    <input type="text" autocomplete="off" id="origin" name="origin4" value="{{origin4}}" required />
+                    <input type="text" autocomplete="off" id="origin" name="origin7" value="{{origin7}}" required />
                     <label for="text" class="label-name">
                         <span class="content-name">
                             Ip do Origin:
@@ -23,8 +24,27 @@
                     </label>
                 </div>
 
+
                 <div class="form">
-                    <input type="text" autocomplete="off" id="cliente" name="email4" value="{{email4}}" required />
+                    <input type="text" autocomplete="off"  id="edge" name="edge9" value="{{edge9}}" required />
+                    <label for="text" class="label-name">
+                        <span class="content-name">
+                            Ip do Edge:
+                        </span>
+                    </label>
+                </div>
+
+                <div class="form">
+                    <input type="text" autocomplete="off"  id="vod" name="vod3" value="{{vod3}}" required />
+                    <label for="text" class="label-name">
+                        <span class="content-name">
+                            Ip do Vod:
+                        </span>
+                    </label>
+                </div>
+
+                <div class="form">
+                    <input type="text" autocomplete="off"  id="cliente" name="email9" value="{{email9}}" required />
                     <label for="text" class="label-name">
                         <span class="content-name">
                             E-mail do cliente:
@@ -33,7 +53,7 @@
                 </div>
 
                 <div class="form">
-                    <input type="text" autocomplete="off" id="demanda" name="ndemanda4" value="{{ndemanda4}}" required />
+                    <input type="text" autocomplete="off"  id="demanda" name="ndemanda9" value="{{ndemanda9}}" required />
                     <label for="text" class="label-name">
                         <span class="content-name">
                             Numero da demanda:
@@ -42,7 +62,7 @@
                 </div>
 
                 <div class="form">
-                    <input type="text" autocomplete="off" id="provedor" name="nprovedor4" value="{{nprovedor4}}" required />
+                    <input type="text" autocomplete="off"  id="provedor" name="nprovedor9" value="{{nprovedor9}}" required />
                     <label for="text" class="label-name">
                         <span class="content-name">
                             Nome do provedor:
@@ -50,31 +70,20 @@
                     </label>
                 </div>
 
-                
-
                 <div class="frame">
                     <button type="submit" value="Enviar" class="custom-btn btn-16">Enviar</button>
                     <p style="font-family: Andale Mono, monospace;">
                   </div>
-                  
-                
             </div>
             
     </form>
-
-
-
-    <div class="row" style="margin-top:200px;">
+    <div class="row" style="margin-top: -5%;">
         <div class="column animate__animated animate__fadeInDown" style="background-color:#333333; ">
             <div id="example"></div>
-
-        </div>
-
         
     </div>
 
-    <script src="{% static 'js/down/DownOrigin.js' %}"></script>
-
+    <script src="{% static 'js/down/DownVodOriginEdge.js' %}"></script>
 </div>
 {% endblock %}
 

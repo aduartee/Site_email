@@ -11,5 +11,6 @@ urlpatterns = [
     path('downedge/', views.downedge, name='downedge'),
 	path('downvod/', views.downvod, name='downvod'),
     path('downoriginvod/', views.downoriginvod, name='downoriginvod'),
-    path('downedgevod/', views.downedgevod, name='downedgevod')
+    path('downedgevod/', views.downedgevod, name='downedgevod'),
+    path('downoriginedgevod', views.downoriginedgevod, name='downoriginedgevod')
     ]

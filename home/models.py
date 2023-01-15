@@ -45,20 +45,20 @@ class Origindown(models.Model):
     origin4 = models.CharField(max_length=30)
     email4 = models.CharField(max_length=30)
     ndemanda4 = models.CharField(max_length=30)
-    nprovdor4 = models.CharField(max_length=20)
+    nprovedor4 = models.CharField(max_length=30, default='PROVEDOR')
     
     def __str__(self) -> str:
         return self.email4
     
     
 class Downedge(models.Model):
-    origin5 = models.CharField(max_length=30)
+    edge5 = models.CharField(max_length=30)
     email5 = models.CharField(max_length=30)
     ndemanda5 = models.CharField(max_length=30)
-    nprovdor5 = models.CharField(max_length=20)
+    nprovedor5 = models.CharField(max_length=20)
     
     def __str__(self) -> str:
-        return self.email4
+        return self.email5
     
     
 class Downvod(models.Model):
@@ -72,7 +72,7 @@ class Downvod(models.Model):
     
     
 class Downoriginvod(models.Model):
-    origin7 = models.CharField(max_length=30)
+    origin6 = models.CharField(max_length=30)
     vod1 = models.CharField(max_length=30)
     email7 = models.CharField(max_length=30)
     ndemanda7 = models.CharField(max_length=30)
@@ -91,3 +91,15 @@ class Downedgevod(models.Model):
     
     def __str__(self) -> str:
         return self.email8
+    
+
+class Downoriginedgevod(models.Model):
+    origin7 = models.CharField(max_length=30)
+    edge9 = models.CharField(max_length=30)
+    vod3 = models.CharField(max_length=30)
+    email9 = models.CharField(max_length=30)
+    ndemanda9 = models.CharField(max_length=30)
+    nprovedor9 = models.CharField(max_length=30)
+    
+    def __str__(self) -> str:
+        return self.email9
