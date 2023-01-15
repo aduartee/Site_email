@@ -72,11 +72,11 @@ class Downvod(models.Model):
     
     
 class Downoriginvod(models.Model):
-    origin6 = models.CharField(max_length=30)
+    origin8 = models.CharField(max_length=30, default='EMAIL')
     vod1 = models.CharField(max_length=30)
     email7 = models.CharField(max_length=30)
     ndemanda7 = models.CharField(max_length=30)
-    nprovdor7 = models.CharField(max_length=20)
+    nprovedor7 = models.CharField(max_length=20)
     
     def __str__(self) -> str:
         return self.email7
@@ -87,7 +87,7 @@ class Downedgevod(models.Model):
     vod2 = models.CharField(max_length=30)
     email8 = models.CharField(max_length=30)
     ndemanda8 = models.CharField(max_length=30)
-    nprovdor8 = models.CharField(max_length=20)
+    nprovedor8 = models.CharField(max_length=20)
     
     def __str__(self) -> str:
         return self.email8

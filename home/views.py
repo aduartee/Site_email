@@ -231,36 +231,37 @@ def downoriginvod(request):
         return render(request, 'down_originvod.html')
     
     elif request.method == 'POST':
-        origin6 = request.POST.get('origin6')
-        vod1 = request.POST.get('vod')
+        origin8 = request.POST.get('origin8')
+        vod1 = request.POST.get('vod1')
         email7 = request.POST.get('email7')
         ndemanda7 = request.POST.get('ndemanda7')
         nprovedor7 = request.POST.get('nprovedor7')
         
-        try: 
-            downoriginvod = Downoriginvod(
-                origin6 = origin6,
-                vod1 = vod1,
-                email7 = email7,
-                ndemanda7 = ndemanda7,
-                nprovedor7 = nprovedor7
-        ) 
-        
-            downoriginvod.save()
-            
-            html_content = render_to_string('email/down/downedge.html', {'vod': vod, 'email6': email6, 'ndemanda6':ndemanda6, 'nprovedor6': nprovedor6})
-            text_content = strip_tags(html_content)
-            envia_email = EmailMultiAlternatives(f'CDNTV[#{ndemanda6}] - {nprovedor6} - Edge Down', text_content, settings.EMAIL_HOST_USER, [email6], None, None, None, None, None, ['ziksduarte@gmail.com'])
-            envia_email.attach_alternative(html_content, 'text/html')
-            envia_email.send()
-            return render(request, 'confirma.html')
-        
-        
-        except: 
-            return redirect('/home/vodretorno/?status=0')
+        #Valida se todos os valores que estão sendo passados na solicitação POST não são None
+        if origin8 and vod1 and email7 and ndemanda7 and nprovedor7:
+            try:
+                downoriginvod = Downoriginvod(
+                    origin8 = origin8,
+                    vod1 = vod1,
+                    email7 = email7,
+                    ndemanda7 = ndemanda7,
+                    nprovedor7 = nprovedor7
+                    ) 
+                    
+                downoriginvod.save()
+                        
+                html_content = render_to_string('email/down/downoriginvod.html', {'origin8': origin8, 'vod1': vod1, 'email7': email7, 'ndemanda7':ndemanda7, 'nprovedor7': nprovedor7})
+                text_content = strip_tags(html_content)
+                envia_email = EmailMultiAlternatives(f'CDNTV[#{ndemanda7}] - {nprovedor7} - Origin e Vod Down', text_content, settings.EMAIL_HOST_USER, [email7], None, None, None, None, None, ['ziksduarte@gmail.com'])
+                envia_email.attach_alternative(html_content, 'text/html')
+                envia_email.send()
+                return render(request, 'confirma.html')
+
+            except:
+                return redirect('/home/vodretorno/?status=2')
+                
+   
        
-
-
 def downedgevod(request):
     if request.method == 'GET':
         return render(request, 'down_edgevod.html')        
@@ -282,13 +283,12 @@ def downedgevod(request):
         
         downedgevod.save()
         
-        #html_content = render_to_string('email/emailapp.html',{'nome': nome, 'mobile': mobile, 'stb':stb, 'ios': ios, 'apks' : apks, 'email3' : email3, 'demanda3' : demanda3, 'nprovedor2' : nprovedor2})
-       # text_content = strip_tags(html_content)
-        #envia_email = EmailMultiAlternatives(f'CDNTV[#{demanda3}] - {nprovedor2} - Criação dos aplicativos', text_content, self_email, [email3], None, None, None, None, None, ['ziksduarte@gmail.com'])
-        #envia_email.attach_alternative(html_content, 'text/html')
-        #envia_email.send()
-
-    return render(request, 'confirma.html')
+        html_content = render_to_string('email/down/downedgevod.html', {'edge8': edge8, 'vod2': vod2, 'email8': email8, 'ndemanda8':ndemanda8, 'nprovedor8': nprovedor8})
+        text_content = strip_tags(html_content)
+        envia_email = EmailMultiAlternatives(f'CDNTV[#{ndemanda8}] - {nprovedor8} - Edge e Vod Down', text_content, settings.EMAIL_HOST_USER, [email8], None, None, None, None, None, ['ziksduarte@gmail.com'])
+        envia_email.attach_alternative(html_content, 'text/html')
+        envia_email.send()
+        return render(request, 'confirma.html')
 
 
 def downoriginedgevod(request):
