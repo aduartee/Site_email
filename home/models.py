@@ -65,7 +65,7 @@ class Downvod(models.Model):
     vod = models.CharField(max_length=30)
     email6 = models.CharField(max_length=30)
     ndemanda6 = models.CharField(max_length=30)
-    nprovdor6 = models.CharField(max_length=20)
+    nprovedor6 = models.CharField(max_length=20)
     
     def __str__(self) -> str:
         return self.email6

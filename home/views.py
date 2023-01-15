@@ -156,7 +156,7 @@ def downorigin(request):
  
         html_content = render_to_string('email/down/downorigin.html', {'origin4': origin4, 'email4': email4, 'ndemanda4':ndemanda4, 'nprovdor4': nprovedor4})
         text_content = strip_tags(html_content)
-        envia_email = EmailMultiAlternatives(f'CDNTV[#{ndemanda4}] - {nprovedor4} - Origin Donw', text_content, settings.EMAIL_HOST_USER, [email4], None, None, None, None, None, ['ziksduarte@gmail.com'])
+        envia_email = EmailMultiAlternatives(f'CDNTV[#{ndemanda4}] - {nprovedor4} - Origin Down', text_content, settings.EMAIL_HOST_USER, [email4], None, None, None, None, None, ['ziksduarte@gmail.com'])
         envia_email.attach_alternative(html_content, 'text/html')
         envia_email.send()
         return render(request, 'confirma.html')
@@ -185,17 +185,18 @@ def downedge(request):
    
         html_content = render_to_string('email/down/downedge.html', {'edge5': edge5, 'email5': email5, 'ndemanda5':ndemanda5, 'nprovedor5': nprovedor5})
         text_content = strip_tags(html_content)
-        envia_email = EmailMultiAlternatives(f'CDNTV[#{ndemanda5}] - {nprovedor5} - Edge Donw', text_content, settings.EMAIL_HOST_USER, [email5], None, None, None, None, None, ['ziksduarte@gmail.com'])
+        envia_email = EmailMultiAlternatives(f'CDNTV[#{ndemanda5}] - {nprovedor5} - Edge Down', text_content, settings.EMAIL_HOST_USER, [email5], None, None, None, None, None, ['ziksduarte@gmail.com'])
         envia_email.attach_alternative(html_content, 'text/html')
         envia_email.send()
         return render(request, 'confirma.html')
 
-    return render(request, 'confirma.html')
 
 
 def downvod(request):
+    
     if request.method == 'GET':
         return render(request, 'down_vod.html')
+        
     
     elif request.method == 'POST':
         vod = request.POST.get('vod')
@@ -203,17 +204,27 @@ def downvod(request):
         ndemanda6 = request.POST.get('ndemanda6')
         nprovedor6 = request.POST.get('nprovedor6')
         
-        downvod = Downvod(
-            vod = vod, 
-            email6 = email6,
-            ndemanda6 = ndemanda6,
-            nprovedor6 = nprovedor6
-        )
+        try: 
+            downvod = Downvod(
+                vod = vod, 
+                email6 = email6,
+                ndemanda6 = ndemanda6,
+                nprovedor6 = nprovedor6
+            )
+            
+            downvod.save()
         
-        downvod.save()
     
-        return render(request, 'confirma.html')
+            html_content = render_to_string('email/down/downedge.html', {'vod': vod, 'email6': email6, 'ndemanda6':ndemanda6, 'nprovedor6': nprovedor6})
+            text_content = strip_tags(html_content)
+            envia_email = EmailMultiAlternatives(f'CDNTV[#{ndemanda6}] - {nprovedor6} - Edge Down', text_content, settings.EMAIL_HOST_USER, [email6], None, None, None, None, None, ['ziksduarte@gmail.com'])
+            envia_email.attach_alternative(html_content, 'text/html')
+            envia_email.send()
+            return render(request, 'confirma.html')
     
+        except: 
+            return redirect('/home/vodretorno/?status=1')
+            
     
 def downoriginvod(request):
     if request.method == 'GET':
@@ -226,23 +237,28 @@ def downoriginvod(request):
         ndemanda7 = request.POST.get('ndemanda7')
         nprovedor7 = request.POST.get('nprovedor7')
         
-        downoriginvod = Downoriginvod(
-            origin6 = origin6,
-            vod1 = vod1,
-            email7 = email7,
-            ndemanda7 = ndemanda7,
-            nprovedor7 = nprovedor7
+        try: 
+            downoriginvod = Downoriginvod(
+                origin6 = origin6,
+                vod1 = vod1,
+                email7 = email7,
+                ndemanda7 = ndemanda7,
+                nprovedor7 = nprovedor7
         ) 
         
-        downoriginvod.save()
+            downoriginvod.save()
+            
+            html_content = render_to_string('email/down/downedge.html', {'vod': vod, 'email6': email6, 'ndemanda6':ndemanda6, 'nprovedor6': nprovedor6})
+            text_content = strip_tags(html_content)
+            envia_email = EmailMultiAlternatives(f'CDNTV[#{ndemanda6}] - {nprovedor6} - Edge Down', text_content, settings.EMAIL_HOST_USER, [email6], None, None, None, None, None, ['ziksduarte@gmail.com'])
+            envia_email.attach_alternative(html_content, 'text/html')
+            envia_email.send()
+            return render(request, 'confirma.html')
         
-    #html_content = render_to_string('email/emailapp.html',{'nome': nome, 'mobile': mobile, 'stb':stb, 'ios': ios, 'apks' : apks, 'email3' : email3, 'demanda3' : demanda3, 'nprovedor2' : nprovedor2})
-    #text_content = strip_tags(html_content)
-    #envia_email = EmailMultiAlternatives(f'CDNTV[#{demanda3}] - {nprovedor2} - Criação dos aplicativos', text_content, self_email, [email3], None, None, None, None, None, ['ziksduarte@gmail.com'])
-    #envia_email.attach_alternative(html_content, 'text/html')
-    #envia_email.send()
-
-    return render(request, 'confirma.html')
+        
+        except: 
+            return redirect('/home/vodretorno/?status=0')
+       
 
 
 def downedgevod(request):
@@ -266,11 +282,11 @@ def downedgevod(request):
         
         downedgevod.save()
         
-    #html_content = render_to_string('email/emailapp.html',{'nome': nome, 'mobile': mobile, 'stb':stb, 'ios': ios, 'apks' : apks, 'email3' : email3, 'demanda3' : demanda3, 'nprovedor2' : nprovedor2})
-    #text_content = strip_tags(html_content)
-    #envia_email = EmailMultiAlternatives(f'CDNTV[#{demanda3}] - {nprovedor2} - Criação dos aplicativos', text_content, self_email, [email3], None, None, None, None, None, ['ziksduarte@gmail.com'])
-    #envia_email.attach_alternative(html_content, 'text/html')
-    #envia_email.send()
+        #html_content = render_to_string('email/emailapp.html',{'nome': nome, 'mobile': mobile, 'stb':stb, 'ios': ios, 'apks' : apks, 'email3' : email3, 'demanda3' : demanda3, 'nprovedor2' : nprovedor2})
+       # text_content = strip_tags(html_content)
+        #envia_email = EmailMultiAlternatives(f'CDNTV[#{demanda3}] - {nprovedor2} - Criação dos aplicativos', text_content, self_email, [email3], None, None, None, None, None, ['ziksduarte@gmail.com'])
+        #envia_email.attach_alternative(html_content, 'text/html')
+        #envia_email.send()
 
     return render(request, 'confirma.html')
 
@@ -304,4 +320,10 @@ def downoriginedgevod(request):
         #envia_email.attach_alternative(html_content, 'text/html')
         #envia_email.send()
             
-  
+
+        
+
+    
+def vodretorno(request):
+    status = request.GET.get('status')
+    return render(request, 'down_vod.html', {'status': status})
