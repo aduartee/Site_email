@@ -7,6 +7,7 @@ from hashlib import sha256
 from django.template.loader import render_to_string
 from django.contrib.auth import login as login_django
 from django.utils.html import strip_tags
+from django.contrib import messages, auth
 from django.contrib.auth.models import User
 
 
@@ -37,10 +38,10 @@ def valida_cadastro(request):
     if User.objects.filter(email = email).exists():
         return redirect('/auth/cadastro/?status=3')
     
+    if User.objects.filter(username = usuario2).exists():
+        return redirect('/auth/cadastro/?status=4')
+    
     try:
-        # responsavel por criptografar a senha que vai ser salva
-        senha2 = sha256(senha2.encode()).hexdigest()
-        
         cadastro = User.objects.create_user(username = usuario2, email= email, password= senha2)
         cadastro.save()
         
@@ -56,25 +57,24 @@ def login(request):
     
 def valida_login(request):
     usuario2 = request.POST.get('usuario2')
+    email = request.POST.get('email')
     senha2= request.POST.get('senha2')
     
-    senha2 = sha256(senha2.encode()).hexdigest()
     
     # Faz a validação se o usuario e senha existe no banco de dados
-    usuario = Cadastrar.objects.filter(usuario2 = usuario2).filter(senha2 = senha2)
+    usuario = auth.authenticate(request, username= usuario2, email=email, password=senha2)
     
     # Se o usuario não existe, ele retorna um status = 0
-    if len(usuario) == 0:
+    if not usuario:
         return redirect('/auth/login/?status=1')
     
-    
-    # Se o usuario existe, ele envia para o a pagina home. Nessa situação usei o session para realizar o login
-    elif len(usuario) > 0:
-        request.session['logado'] = True
-        return redirect('/home')
+    #Autentica o usuario caso ele exista
+    else:
+        auth.login(request, usuario)
+        return redirect('/home/')
         
 def logout(request):
-    request.session['logado'] = None
+    auth.logout(request)
     return redirect('/auth/login')
     
 def senhas_diferentes(senha,senha2):

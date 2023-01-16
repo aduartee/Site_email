@@ -9,17 +9,14 @@ from django.core.mail import EmailMultiAlternatives
 from django.template.loader import render_to_string
 from django.utils.html import strip_tags
 from home.models import Cdntv, VOD, Aplicativos, Origindown, Downedge, Downvod, Downoriginvod, Downedgevod, Downoriginedgevod
+from django.contrib.auth.decorators import login_required
 import re
 from django.conf import settings
 
 
-
+@login_required(login_url = '/auth/login/')
 def home(request):
-    if request.session['logado']:
-        return render(request, 'home.html')
-    
-    else:
-        return redirect('/auth/login/?status=2')
+    return render(request, 'home.html')
     
 def vodretorno(request):
     status = request.GET.get('status')
