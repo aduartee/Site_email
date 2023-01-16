@@ -7,7 +7,7 @@ from hashlib import sha256
 from django.template.loader import render_to_string
 from django.contrib.auth import login as login_django
 from django.utils.html import strip_tags
-
+from django.contrib.auth.models import User
 
 
 def cadastro(request):
@@ -16,6 +16,7 @@ def cadastro(request):
 
 def valida_cadastro(request):
     usuario2 = request.POST.get('usuario2')
+    email = request.POST.get('email')
     senha2 = request.POST.get('senha2')
     confirmasenha = request.POST.get('confirmasenha')
     
@@ -33,22 +34,17 @@ def valida_cadastro(request):
     
     
     # Verifica se já existe algum outro usuario com esse email
-    cadastro = Cadastrar.objects.filter(usuario2 = usuario2)
-    
-    # Nesse caso, se o tamanho for maior que 0, logo ele existe, então ele retorna um status = 3
-    if len(cadastro) > 0:
+    if User.objects.filter(email = email).exists():
         return redirect('/auth/cadastro/?status=3')
     
     try:
         # responsavel por criptografar a senha que vai ser salva
         senha2 = sha256(senha2.encode()).hexdigest()
         
-        cadastro = Cadastrar(
-            usuario2 = usuario2,
-            senha2 = senha2,
-            confirmasenha = confirmasenha
-        )
+        cadastro = User.objects.create_user(username = usuario2, email= email, password= senha2)
         cadastro.save()
+        
+        #Mensagem de sucesso
         return redirect('/auth/cadastro/?status=0')
 
     except:

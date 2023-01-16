@@ -5,6 +5,7 @@ from django.db import models
 
 
 class Cadastrar(models.Model):
-    usuario2 = models.CharField(max_length=50)
-    senha2 = models.CharField(max_length=50)
-    confirmasenha = models.CharField(max_length=50)
+    usuario2 = models.CharField(max_length=15)
+    email = models.CharField(max_length=40, null=False, blank=False, default="email@technobox.com")
+    senha2 = models.CharField(max_length=20)
+    confirmasenha = models.CharField(max_length=20)
