@@ -24,40 +24,7 @@
                         {{i}}
                     </div>
                 {% endfor %}
-
-            {% if status == '0' %}
-            <div class="alert alert-success" role="alert">
-                Usuario cadastrado com sucesso !
-            </div>
-
-            {% endif %}
-
-            {% if status == '1' %}
-            <div class="alert alert-danger" role="alert">
-                Nome e email não podem estar vazios
-            </div>
-
-            {% endif %}
-
-
-            {% if status == '3' %}
-            <div class="alert alert-danger" role="alert">
-                Email já foi cadastrado!
-            </div>
-
-            {% endif %}
-
-            {% if status == '4' %}
-            <div class="alert alert-danger" role="alert">
-                Erro interno...
-            </div>
-            {% endif %}
-
-            {% if status == '10' %}
-            <div class="alert alert-danger" role="alert">
-                As senhas devem ser iguais
-            </div>
-            {% endif %}
+                
         </div>
         <section class="area-login">
             <div class="login animate__animated animate__backInLeft">
