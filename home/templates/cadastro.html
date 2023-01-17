@@ -19,6 +19,12 @@
 <body style="background-color: #2a2a2a;">
     <div>
         <div>
+                {%for i in messages %}
+                    <div class="alert {{i.tags}}" role="alert">
+                        {{i}}
+                    </div>
+                {% endfor %}
+
             {% if status == '0' %}
             <div class="alert alert-success" role="alert">
                 Usuario cadastrado com sucesso !
@@ -33,12 +39,6 @@
 
             {% endif %}
 
-            {% if status == '2' %}
-            <div class="alert alert-danger" role="alert">
-                Sua senha deve possuir no minimo quatro caracteres
-            </div>
-
-            {% endif %}
 
             {% if status == '3' %}
             <div class="alert alert-danger" role="alert">

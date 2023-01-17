@@ -3,6 +3,7 @@
 
 
 {% block 'head' %}
+<link rel="stylesheet" href="{% static 'home/preloader.css' %}">
 <link rel="stylesheet" href="{% static 'home/down.css' %}">
 <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500&display=swap" rel="stylesheet">
@@ -11,7 +12,13 @@
 
 {% block 'dashboard' %}
 
+<div id="preloader">
+  <span class="dot dot-red"></span>
+  <span class="dot dot-yellow"></span>
+  <span class="dot dot-green"></span>
+</div>
 <div class="animate__animated animate__zoomIn">
+  
 <div class="cont2" style="width:14.5%">
     <img src=" {% static 'img/down_origin.png' %}" class="imagem2">
     <div class="middled2">
@@ -60,6 +67,7 @@
 {% block 'body' %}
 {% endblock %}
 <script src="{% static 'js/base.js' %}"></script>
+<script src="{% static 'js/preloader.js' %}"></script>
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 </body>

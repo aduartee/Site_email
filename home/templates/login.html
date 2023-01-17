@@ -17,16 +17,12 @@
 {% endblock %}
 <body style="background-color: #2a2a2a;">
 
-    {% if status == '1' %}
-    <div class="alert alert-danger" role="alert">
-        Email ou senha invalidos
-    </div>
-    {% endif %}
-
-    {% if status == '2' %}
-    <div class="alert alert-warning" role="alert">
-        Você deve estar logado para acessar o CDNTV MAIL
-    </div>
+    {% if messages %}
+        {% for i in messages %}
+            <div class="alert {{i.tags}}" role="alert">
+                {{i}}
+            </div>
+        {% endfor %}
     {% endif %}
 
 

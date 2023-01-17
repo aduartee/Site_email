@@ -8,6 +8,7 @@ from django.template.loader import render_to_string
 from django.contrib.auth import login as login_django
 from django.utils.html import strip_tags
 from django.contrib import messages, auth
+from django.contrib.messages import constants
 from django.contrib.auth.models import User
 
 
@@ -24,32 +25,43 @@ def valida_cadastro(request):
     ## Valida se o usuario não digitou nada no campo de usuario
     if len(usuario2.strip()) == 0 or len(senha2.strip()) == 0:
         # Vai redirecionar para a pagina de login, será passado um status = 1 
-        return redirect('/auth/cadastro/?status=1')
+        messages.add_message(request, constants.ERROR,'Os campos não podem ficar vazios')
+        return redirect('/auth/cadastro/')
     
+    if len(email.strip()) == 0:
+        messages.add_message(request, constants.ERROR,'O campo email deve ser preenchido')
+        return redirect('/auth/cadastro/')
+     
     # Valida se a senha é menor que 4 digitos, se for, vai ser passado um status = 2
     if len(senha2) < 4:
-        return redirect('/auth/cadastro/?status=2')
+        messages.add_message(request, constants.ERROR,'Sua senha deve possuir no minimo quatro caracteres')
+        return redirect('auth/cadastro/')
     
     if senhas_diferentes(senha2, confirmasenha):
-        return redirect('/auth/cadastro/?status=10')
+        messages.add_message(request, constants.ERROR,'As senhas devem ser iguais')
+        return redirect('/auth/cadastro/')
     
     
     # Verifica se já existe algum outro usuario com esse email
     if User.objects.filter(email = email).exists():
-        return redirect('/auth/cadastro/?status=3')
+        messages.add_message(request, constants.ERROR,'Email já foi cadastrado')
+        return redirect('/auth/cadastro/')
     
     if User.objects.filter(username = usuario2).exists():
-        return redirect('/auth/cadastro/?status=4')
+        messages.add_message(request, constants.ERROR,'Usuário já foi cadastrado')
+        return redirect('/auth/cadastro/')
     
     try:
         cadastro = User.objects.create_user(username = usuario2, email= email, password= senha2)
         cadastro.save()
         
         #Mensagem de sucesso
-        return redirect('/auth/cadastro/?status=0')
+        messages.add_message(request, constants.SUCCESS,'Usuário cadastrado com sucesso')
+        return redirect('/auth/cadastro/')
 
     except:
-        return redirect('/auth/cadastro/?status=4')
+        messages.add_message(request, constants.ERROR,'Erro interno')
+        return redirect('/auth/cadastro/')
         
 def login(request):
     status = request.GET.get('status')
@@ -61,12 +73,13 @@ def valida_login(request):
     senha2= request.POST.get('senha2')
     
     
-    # Faz a validação se o usuario e senha existe no banco de dados
+    # Faz a validação se o usuario, senha e email existem no banco de dados
     usuario = auth.authenticate(request, username= usuario2, email=email, password=senha2)
     
     # Se o usuario não existe, ele retorna um status = 0
     if not usuario:
-        return redirect('/auth/login/?status=1')
+        messages.add_message(request, constants.ERROR,'Email ou senha invalidos')
+        return redirect('/auth/login/')
     
     #Autentica o usuario caso ele exista
     else:

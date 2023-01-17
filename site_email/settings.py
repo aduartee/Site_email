@@ -1,9 +1,7 @@
 import os
 from pathlib import Path
 from decouple import config
-
-
-
+from django.contrib.messages import constants 
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -112,6 +110,16 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = "/media/"
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+#Django message
+
+MESSAGE_TAGS = { 
+    constants.DEBUG:'alert-primary',
+    constants.ERROR:'alert-danger',
+    constants.SUCCESS:'alert-sucess',
+    constants.INFO:'altert-info',
+    constants.WARNING:'alert-warning',
+}
 
 
 # EMAIL
