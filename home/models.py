@@ -33,7 +33,7 @@ class Aplicativos(models.Model):
     ios = models.CharField(max_length=50)
     apks = models.CharField(max_length=60)
     self_email = models.CharField(max_length=40, default='EMAIL')
-    email3 = models.CharField(max_length=62)
+    email3 = models.EmailField(max_length=62)
     demanda3 = models.CharField(max_length=5)
     nprovedor2 =  models.CharField(max_length= 52)
     
@@ -43,7 +43,7 @@ class Aplicativos(models.Model):
     
 class Origindown(models.Model):
     origin4 = models.CharField(max_length=30)
-    email4 = models.CharField(max_length=30)
+    email4 = models.EmailField(max_length=30)
     ndemanda4 = models.CharField(max_length=30)
     nprovedor4 = models.CharField(max_length=30, default='PROVEDOR')
     
@@ -53,7 +53,7 @@ class Origindown(models.Model):
     
 class Downedge(models.Model):
     edge5 = models.CharField(max_length=30)
-    email5 = models.CharField(max_length=30)
+    email5 = models.EmailField(max_length=30)
     ndemanda5 = models.CharField(max_length=30)
     nprovedor5 = models.CharField(max_length=20)
     
@@ -63,7 +63,7 @@ class Downedge(models.Model):
     
 class Downvod(models.Model):
     vod = models.CharField(max_length=30)
-    email6 = models.CharField(max_length=30)
+    email6 = models.EmailField(max_length=30)
     ndemanda6 = models.CharField(max_length=30)
     nprovedor6 = models.CharField(max_length=20)
     
@@ -72,9 +72,9 @@ class Downvod(models.Model):
     
     
 class Downoriginvod(models.Model):
-    origin8 = models.CharField(max_length=30, default='EMAIL')
+    origin8 = models.CharField(max_length=30, default='Origin')
     vod1 = models.CharField(max_length=30)
-    email7 = models.CharField(max_length=30)
+    email7 = models.EmailField(max_length=30)
     ndemanda7 = models.CharField(max_length=30)
     nprovedor7 = models.CharField(max_length=20)
     
@@ -85,7 +85,7 @@ class Downoriginvod(models.Model):
 class Downedgevod(models.Model):
     edge8 = models.CharField(max_length=30)
     vod2 = models.CharField(max_length=30)
-    email8 = models.CharField(max_length=30)
+    email8 = models.EmailField(max_length=30)
     ndemanda8 = models.CharField(max_length=30)
     nprovedor8 = models.CharField(max_length=20)
     
@@ -97,7 +97,7 @@ class Downoriginedgevod(models.Model):
     origin7 = models.CharField(max_length=30)
     edge9 = models.CharField(max_length=30)
     vod3 = models.CharField(max_length=30)
-    email9 = models.CharField(max_length=30)
+    email9 = models.EmailField(max_length=30)
     ndemanda9 = models.CharField(max_length=30)
     nprovedor9 = models.CharField(max_length=30)
     

@@ -16,11 +16,14 @@ from django.conf import settings
 
 @login_required(login_url = '/auth/login/')
 def home(request):
-    return render(request, 'home.html')
+    if request.method == 'GET':
+        return render(request, 'home.html')
     
 def vodretorno(request):
     status = request.GET.get('status')
     return render(request, 'down_vod.html', {'status': status})
+
+
 
 
 def cdntv(request):
@@ -51,7 +54,7 @@ def cdntv(request):
         cdntv.save()
         html_content = render_to_string('email\emailcdntv.html',{'origin': origin, 'senha': senha, 'edge':edge, 'email': email})
         text_content = strip_tags(html_content)
-        envia_email = EmailMultiAlternatives(f'CDNTV[#{demanda}] - {provedor} - Implementação do serviço', text_content, settings.EMAIL_HOST_USER, [email], None, None, None, None, None,['ativacoes.technobox'])
+        envia_email = EmailMultiAlternatives(f'CDNTV[#{demanda}] - {provedor} - Implementação do serviço', text_content, settings.EMAIL_HOST_USER, [email], None, None, None, None, None,['ziksduarte@gmail.com'])
         envia_email.attach_alternative(html_content, 'text/html')
         envia_email.send()
         

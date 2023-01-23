@@ -13,8 +13,7 @@ from django.contrib.auth.models import User
 
 
 def cadastro(request):
-    status = request.GET.get('status')
-    return render(request, 'cadastro.html', {'status': status})
+    return render(request, 'cadastro.html')
 
 def valida_cadastro(request):
     usuario2 = request.POST.get('usuario2')

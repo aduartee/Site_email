@@ -94,12 +94,13 @@ h1 {
 }
 
 .column {
+    font-size:13px;
     float: left;
-    margin-top: -50%;
+    margin-top: -76%;
     margin-left: 10%;
     width: 80%;
     padding: 10px;
-    height: 250px;
+    height: 100%;
 }
 
 .row:after {

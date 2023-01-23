@@ -23,7 +23,7 @@
 
 
                 <div class="form">
-                    <input type="text" autocomplete="off" name="origin" value="{{origin}}" required />
+                    <input type="text" autocomplete="off" id="origin" name="origin" value="{{origin}}" required />
                     <label for="text" class="label-name">
                         <span class="content-name">
                             Manager:
@@ -32,7 +32,7 @@
                 </div>
 
                 <div class="form">
-                    <input type="text" autocomplete="off" name="senha" value="{{senha}}" required />
+                    <input type="text" autocomplete="off" id="senha" name="senha" value="{{senha}}" required />
                     <label for="text" class="label-name">
                         <span class="content-name">
                             Senha manager:
@@ -41,7 +41,7 @@
                 </div>
 
                 <div class="form">
-                    <input type="text" autocomplete="off" name="edge" value="{{edge}}" required />
+                    <input type="text" autocomplete="off" id="edge" name="edge" value="{{edge}}" required />
                     <label for="text" class="label-name">
                         <span class="content-name">
                             Edge:
@@ -51,7 +51,7 @@
 
 
                 <div class="form">
-                    <input type="text" autocomplete="off" name="email" value="{{email}}" required />
+                    <input type="text" autocomplete="off" id="email" name="email" value="{{email}}" required />
                     <label for="text" class="label-name">
                         <span class="content-name">
                             E-mail do cliente:
@@ -60,7 +60,7 @@
                 </div>
 
                 <div class="form">
-                    <input type="text" autocomplete="off" name="demanda" value="{{demanda}}" required />
+                    <input type="text" autocomplete="off" id="demanda" name="demanda" value="{{demanda}}" required />
                     <label for="text" class="label-name">
                         <span class="content-name">
                             Numero da demanda:
@@ -69,7 +69,7 @@
                 </div>
 
                 <div class="form">
-                    <input type="text" autocomplete="off" name="provedor" value="{{provedor}}" required />
+                    <input type="text" autocomplete="off" id="provedor" name="provedor" value="{{provedor}}" required />
                     <label for="text" class="label-name">
                         <span class="content-name">
                             Nome do provedor:
@@ -91,11 +91,7 @@
 
     <div class="row">
         <div class="column animate__animated animate__fadeInRight" style="background-color:#333333; ">
-            <h2>Lembrando que os acessos devem seguir esses modelos:</h2>
-            <p>Manager: http://45.175.124.26:8089/ </p>
-            <p>Senha do manager: admin@cliente.com </p>
-            <p>Edge: https://subdomio_cliente.com.br/</p>
-            <p>Titulo do email: CDNTV[#DEMANDA] PROVEDOR - Tipo do serviço</p>
+            <div id="example"></div>
 
         </div>
     </div>
@@ -105,6 +101,7 @@
 
 {% block 'body' %}
 <script src="{% static 'js/preloader.js' %}"></script>
+<script src="{% static 'js/cdntv/cdntv.js' %}"></script>
 {% endblock%}
 
 {% endblock %}
